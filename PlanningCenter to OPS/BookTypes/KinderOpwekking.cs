@@ -3,13 +3,14 @@ using System.Linq;
 
 namespace PlanningCenter_to_OPS.BookTypes
 {
-    internal class Opwekking : BookType
+    internal class KinderOpwekking : BookType
     {
-        public Opwekking(string song_name)
+        public KinderOpwekking(string song_name)
         {
             this.song_name = song_name;
         }
-        public override string SongBookName => "Opwekking";
+
+        public override string SongBookName => "Kinderen";
 
         public override string StyleName => "OPS";
 
@@ -17,8 +18,8 @@ namespace PlanningCenter_to_OPS.BookTypes
 
         public override string SongName => this.song_name;
 
-        public override string SongNumber => this.song_name.Split()[0].TrimStart('0');
+        public override string SongNumber => this.song_name.Split()[1].TrimStart('0');
 
-        public override string Title => String.Join(" ", this.song_name.Split().Skip(1));
+        public override string Title => String.Join(" ", this.song_name.Split().Skip(2));
     }
 }

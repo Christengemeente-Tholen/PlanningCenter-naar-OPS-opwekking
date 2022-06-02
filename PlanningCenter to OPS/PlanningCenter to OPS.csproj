@@ -55,6 +55,7 @@
     <Compile Include="Actions\UpdateView.cs" />
     <Compile Include="Api.cs" />
     <Compile Include="BookTypes\Init.cs" />
+    <Compile Include="BookTypes\KinderOpwekking.cs" />
     <Compile Include="BookTypes\Opwekking.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="MainForm.cs">

@@ -11,19 +11,17 @@ namespace PlanningCenter_to_OPS.Actions
 
         internal static XElement SongNode(string song_name, string song_type)
         {
-            string[] split_song_name = song_name.Split();
-
-            BookType book = Init.GetType(song_type);
+            BookType book = Init.GetType(song_type, song_name);
 
             XElement doc = new XElement("Song", 
                 new XElement("Comment"),
                 new XElement("DisplayTitle", song_name),
                 new XElement("DisplayTitleShort", song_name),
-                new XElement("Number", split_song_name[0]),
+                new XElement("Number", book.SongNumber),
                 new XElement("SongBookName", book.SongBookName),
                 new XElement("Keys"),
                 new XElement("StyleName", book.StyleName),
-                new XElement("Title", String.Join(" ", split_song_name.Skip(1))),
+                new XElement("Title", book.Title),
                 new XElement("SelectedVersion", book.SelectedVersion),
                 new XElement("Language", "All"),
                 new XElement("SongBookPrefix", song_type) // TODO add values
@@ -59,6 +57,9 @@ namespace PlanningCenter_to_OPS.Actions
                     if (Decimal.TryParse(x.attributes.title.Split()[0], out _))
                     {
                         xml_list.Add(SongNode(x.attributes.title, "opw"));
+                    } else if (x.attributes.title.Split()[0].ToLower() == "kopw")
+                    {
+                        xml_list.Add(SongNode(x.attributes.title, "kopw"));
                     } else
                     {
                         LyricsToFile.ToFile(config, x);
