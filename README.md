@@ -5,5 +5,6 @@ deze tool kan gekoppeld worden aan planningcenter services en kan de service omz
 
 PlanningCenter:
 https://www.planningcenter.com/services
+
 OPS:
 https://www.opwekking.nl/uitgaven/ops-pro
