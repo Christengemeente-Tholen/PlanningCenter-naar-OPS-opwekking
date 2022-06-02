@@ -29,13 +29,13 @@ namespace PlanningCenter_to_OPS
             return json_serializer.Deserialize<Structs.ServiceType>(data);
         }
 
-        public static Structs.ServicePlans GetServicePlans(Config config, string service_type)
+        public static Structs.ServicePlans GetServicePlans(Config config, string service_type, string filter_date = "future") // no_dates | future
         {
             DateTime dt = DateTime.Now;
             string url = String.Format(
-                "https://api.planningcenteronline.com/services/v2/service_types/{0}/plans?order=sort_date&filter=after&after={1}&include=plan_times",
+                "https://api.planningcenteronline.com/services/v2/service_types/{0}/plans?order=sort_date&filter={1}&include=plan_times",
                 service_type,
-                dt.ToString("yyyy-MM-dd")
+                filter_date
             );
             string data = GetRequest(config, url);
             JavaScriptSerializer json_serializer = new JavaScriptSerializer();

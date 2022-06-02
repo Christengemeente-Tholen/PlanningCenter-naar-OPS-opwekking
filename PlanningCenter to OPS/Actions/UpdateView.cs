@@ -41,36 +41,42 @@ namespace PlanningCenter_to_OPS.Actions
             }
         }
 
+        internal static List<string> filter_date_types = new List<string>() {"future", "no_dates"};
+
         internal static Dictionary<string, string> UpdatePlans(Config config, ComboBox.ObjectCollection items, string selected_service_type)
         {
+            Dictionary<string, string> ServiceTypes = new Dictionary<string, string>();
             items.Clear();
             try
             {
-                Structs.ServicePlans ServiceTypeDict = Api.GetServicePlans(config, selected_service_type);
-                Dictionary<string, string> ServiceTypes = new Dictionary<string, string>();
-                ServiceTypeDict.data.ForEach(x =>
+                UpdateView.filter_date_types.ForEach(date_type =>
                 {
-                    string current_plan;
-                    if (x.attributes.title != null)
+                    Structs.ServicePlans ServiceTypeDict = Api.GetServicePlans(config, selected_service_type, date_type);
+                    ServiceTypeDict.data.ForEach(x =>
                     {
-                        current_plan = x.attributes.title;
-                    } else
-                    {
-                        current_plan = x.attributes.dates;
-                    }
-                    int i = 1;
-
-                    if (items.Contains(current_plan))
-                    {
-                        while (items.Contains(current_plan + " " + i))
+                        string current_plan;
+                        if (x.attributes.title != null)
                         {
-                            i++;
+                            current_plan = x.attributes.title;
                         }
-                        items.Add(current_plan + " " + i);
-                        ServiceTypes.Add(current_plan + " " + i, x.links.self);
-                    }
-                    items.Add(current_plan);
-                    ServiceTypes.Add(current_plan, x.links.self);
+                        else
+                        {
+                            current_plan = x.attributes.dates;
+                        }
+                        int i = 1;
+
+                        if (items.Contains(current_plan))
+                        {
+                            while (items.Contains(current_plan + " " + i))
+                            {
+                                i++;
+                            }
+                            items.Add(current_plan + " " + i);
+                            ServiceTypes.Add(current_plan + " " + i, x.links.self);
+                        }
+                        items.Add(current_plan);
+                        ServiceTypes.Add(current_plan, x.links.self);
+                    });
                 });
 
                 return ServiceTypes;
@@ -78,7 +84,7 @@ namespace PlanningCenter_to_OPS.Actions
             catch (WebException e)
             {
                 MessageBox.Show(e.Message);
-                return new Dictionary<string, string>();
+                return ServiceTypes;
             }
         }
     }
