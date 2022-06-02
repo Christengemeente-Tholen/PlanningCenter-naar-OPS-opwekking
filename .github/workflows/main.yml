@@ -15,7 +15,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1
     
     - name: Build
-      run: msbuild "PlanningCenter to OPS.sln" /p:Configuration=Release /p:Platform=AnyCPU
+      run: msbuild "PlanningCenter to OPS.sln" /p:Configuration=Release /p:Platform="Any CPU"
     - name: release
       uses: zendesk/action-create-release@v1
       id: create_release
