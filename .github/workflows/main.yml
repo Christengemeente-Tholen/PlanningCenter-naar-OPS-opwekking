@@ -1,0 +1,38 @@
+name: .NET
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: windows-2019
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: setup MS-build
+      uses: microsoft/setup-msbuild@v1
+    
+    - name: Build
+      run: msbuild gather-standalone.sln /p:Configuration=Release /p:Platform=AnyCPU
+    - name: release
+      uses: zendesk/action-create-release@v1
+      id: create_release
+      with:
+        tag_name: Latest
+        release_name: Latest
+        draft: false
+        prerelease: false
+        body_path: CHANGELOG.md
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+    - name: upload windows artifact
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: PlanningCenter to OPS\bin\Release\PlanningCenter to OPS.exe
+        asset_name: PlanningCenter to OPS.exe
+        asset_content_type: application/exe
