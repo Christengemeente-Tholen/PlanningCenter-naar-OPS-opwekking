@@ -10,4 +10,4 @@ OPS:
 https://www.opwekking.nl/uitgaven/ops-pro
 
 Resultaat:
-![image](https://user-images.githubusercontent.com/22680656/171613735-c42139b3-fee3-4a43-9c67-5cb2117de627.png)
+![image](https://user-images.githubusercontent.com/22680656/171613861-f72c0dda-4186-4dac-a9d7-5e0830ba05a8.png)
