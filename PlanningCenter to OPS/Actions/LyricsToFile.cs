@@ -48,9 +48,12 @@ namespace PlanningCenter_to_OPS.Actions
                     {
                         // replace chorus with ops eqivelant
                         Dictionary<string, string> translate_to_ops = new Dictionary<string, string>() {
-                            { "Chorus 1", "Refrein 1:"},
-                            { "Chorus 2", "Refrein 2:"},
-                            { "Chorus 3", "Refrein 3:"}
+                            { "Chorus", "chorus:" },
+                            { "Chorus 1", "chorus 1:"},
+                            { "Chorus 2", "chorus 2:"},
+                            { "Chorus 3", "chorus 3:"},
+                            { "Bridge", "bridge:" },
+                            { "Bridge 2x", "bridge 2x:" }
                         };
 
                         string translated_ops;
