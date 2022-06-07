@@ -58,5 +58,77 @@ namespace PlanningCenter_to_OPS.Properties {
                 this["song_folder"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool opw_selector_enabled {
+            get {
+                return ((bool)(this["opw_selector_enabled"]));
+            }
+            set {
+                this["opw_selector_enabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool kopw_selector_enabled {
+            get {
+                return ((bool)(this["kopw_selector_enabled"]));
+            }
+            set {
+                this["kopw_selector_enabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("*")]
+        public string opw_selector {
+            get {
+                return ((string)(this["opw_selector"]));
+            }
+            set {
+                this["opw_selector"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("kopw *")]
+        public string kopw_selector {
+            get {
+                return ((string)(this["kopw_selector"]));
+            }
+            set {
+                this["kopw_selector"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool opw_case_sensitive {
+            get {
+                return ((bool)(this["opw_case_sensitive"]));
+            }
+            set {
+                this["opw_case_sensitive"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool kopw_case_sensitive {
+            get {
+                return ((bool)(this["kopw_case_sensitive"]));
+            }
+            set {
+                this["kopw_case_sensitive"] = value;
+            }
+        }
     }
 }

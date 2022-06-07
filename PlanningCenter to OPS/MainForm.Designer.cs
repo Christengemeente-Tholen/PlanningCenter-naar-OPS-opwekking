@@ -38,6 +38,8 @@
             this.SaveButton = new System.Windows.Forms.Button();
             this.SongLocationLabel = new System.Windows.Forms.Label();
             this.EditSongLocation = new System.Windows.Forms.Button();
+            this.EditOpsSkipList = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // EditLogin
@@ -63,7 +65,7 @@
             // 
             this.ServiceTypeSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ServiceTypeSelector.FormattingEnabled = true;
-            this.ServiceTypeSelector.Location = new System.Drawing.Point(208, 117);
+            this.ServiceTypeSelector.Location = new System.Drawing.Point(207, 119);
             this.ServiceTypeSelector.Name = "ServiceTypeSelector";
             this.ServiceTypeSelector.Size = new System.Drawing.Size(552, 33);
             this.ServiceTypeSelector.Sorted = true;
@@ -74,7 +76,7 @@
             // 
             this.PlanSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PlanSelector.FormattingEnabled = true;
-            this.PlanSelector.Location = new System.Drawing.Point(208, 167);
+            this.PlanSelector.Location = new System.Drawing.Point(207, 165);
             this.PlanSelector.Name = "PlanSelector";
             this.PlanSelector.Size = new System.Drawing.Size(552, 33);
             this.PlanSelector.Sorted = true;
@@ -84,7 +86,7 @@
             // ServiceTypeText
             // 
             this.ServiceTypeText.AutoSize = true;
-            this.ServiceTypeText.Location = new System.Drawing.Point(39, 120);
+            this.ServiceTypeText.Location = new System.Drawing.Point(39, 122);
             this.ServiceTypeText.Name = "ServiceTypeText";
             this.ServiceTypeText.Size = new System.Drawing.Size(144, 25);
             this.ServiceTypeText.TabIndex = 4;
@@ -101,7 +103,7 @@
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(334, 220);
+            this.SaveButton.Location = new System.Drawing.Point(615, 220);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(145, 42);
             this.SaveButton.TabIndex = 6;
@@ -128,11 +130,33 @@
             this.EditSongLocation.UseVisualStyleBackColor = true;
             this.EditSongLocation.Click += new System.EventHandler(this.EditSongLocation_Click);
             // 
+            // EditOpsSkipList
+            // 
+            this.EditOpsSkipList.Location = new System.Drawing.Point(338, 220);
+            this.EditOpsSkipList.Name = "EditOpsSkipList";
+            this.EditOpsSkipList.Size = new System.Drawing.Size(270, 42);
+            this.EditOpsSkipList.TabIndex = 9;
+            this.EditOpsSkipList.Text = "OPS Skiplist bewerken";
+            this.EditOpsSkipList.UseVisualStyleBackColor = true;
+            this.EditOpsSkipList.Click += new System.EventHandler(this.EditOpsSkipList_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(44, 220);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(287, 42);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Liedherkenning bewerken";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(800, 281);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.EditOpsSkipList);
             this.Controls.Add(this.EditSongLocation);
             this.Controls.Add(this.SongLocationLabel);
             this.Controls.Add(this.SaveButton);
@@ -163,6 +187,8 @@
         public System.Windows.Forms.ComboBox ServiceTypeSelector;
         private System.Windows.Forms.Label SongLocationLabel;
         private System.Windows.Forms.Button EditSongLocation;
+        private System.Windows.Forms.Button EditOpsSkipList;
+        private System.Windows.Forms.Button button1;
     }
 }
 

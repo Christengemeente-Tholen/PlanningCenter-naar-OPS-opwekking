@@ -24,11 +24,11 @@ namespace PlanningCenter_to_OPS
             secretTextBox.Text = secret;
         }
 
-            private void EditFormClosing(object sender, FormClosingEventArgs e)
+        private void EditFormClosing(object sender, FormClosingEventArgs e)
         {
             if (!app_id.Equals(config.app_id) && !secret.Equals(config.secret))
             {
-                DialogResult dialogResult = MessageBox.Show("You have unsaved changes, do want to save them?", "Message editor", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Je hebt veranderingen die niet opgeslagen zijn, wilt u ze opslaan?", "Api koppelen", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     this.Save();

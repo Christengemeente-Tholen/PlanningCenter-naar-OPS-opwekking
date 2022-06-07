@@ -43,7 +43,7 @@
             // 
             // appIdTextBox
             // 
-            this.appIdTextBox.Location = new System.Drawing.Point(213, 131);
+            this.appIdTextBox.Location = new System.Drawing.Point(213, 127);
             this.appIdTextBox.Name = "appIdTextBox";
             this.appIdTextBox.Size = new System.Drawing.Size(1027, 31);
             this.appIdTextBox.TabIndex = 0;
@@ -51,7 +51,7 @@
             // 
             // secretTextBox
             // 
-            this.secretTextBox.Location = new System.Drawing.Point(213, 171);
+            this.secretTextBox.Location = new System.Drawing.Point(213, 167);
             this.secretTextBox.Name = "secretTextBox";
             this.secretTextBox.Size = new System.Drawing.Size(1027, 31);
             this.secretTextBox.TabIndex = 1;
@@ -81,7 +81,7 @@
             // appIdLabel
             // 
             this.appIdLabel.AutoSize = true;
-            this.appIdLabel.Location = new System.Drawing.Point(44, 136);
+            this.appIdLabel.Location = new System.Drawing.Point(44, 130);
             this.appIdLabel.Name = "appIdLabel";
             this.appIdLabel.Size = new System.Drawing.Size(150, 25);
             this.appIdLabel.TabIndex = 4;
@@ -90,7 +90,7 @@
             // secretIdLabel
             // 
             this.secretIdLabel.AutoSize = true;
-            this.secretIdLabel.Location = new System.Drawing.Point(44, 171);
+            this.secretIdLabel.Location = new System.Drawing.Point(44, 166);
             this.secretIdLabel.Name = "secretIdLabel";
             this.secretIdLabel.Size = new System.Drawing.Size(80, 25);
             this.secretIdLabel.TabIndex = 5;
@@ -117,7 +117,7 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(389, 218);
+            this.saveButton.Location = new System.Drawing.Point(389, 214);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(188, 52);
             this.saveButton.TabIndex = 8;
@@ -127,7 +127,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(743, 218);
+            this.cancelButton.Location = new System.Drawing.Point(743, 214);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(186, 52);
             this.cancelButton.TabIndex = 9;
@@ -139,7 +139,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1278, 296);
+            this.ClientSize = new System.Drawing.Size(1278, 286);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.titleLabel3);

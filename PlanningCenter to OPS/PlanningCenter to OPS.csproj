@@ -58,6 +58,12 @@
     <Compile Include="BookTypes\KinderOpwekking.cs" />
     <Compile Include="BookTypes\Opwekking.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="EditSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditSearchForm.Designer.cs">
+      <DependentUpon>EditSearchForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,9 @@
     <Compile Include="Structs\ServicesOrg.cs" />
     <Compile Include="Structs\ServiceType.cs" />
     <Compile Include="Structs\SongList.cs" />
+    <EmbeddedResource Include="EditSearchForm.resx">
+      <DependentUpon>EditSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

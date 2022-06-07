@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using System.Linq;
+using System.Text.RegularExpressions;
 using PlanningCenter_to_OPS.BookTypes;
 
 namespace PlanningCenter_to_OPS.Actions
@@ -9,19 +9,19 @@ namespace PlanningCenter_to_OPS.Actions
     internal class ToXml
     {
 
-        internal static XElement SongNode(string song_name, string song_type)
+        internal static XElement SongNode(string song_name, string song_type, string song_number)
         {
-            BookType book = Init.GetType(song_type, song_name);
+            BookType book = Init.GetType(song_type);
 
             XElement doc = new XElement("Song", 
                 new XElement("Comment"),
                 new XElement("DisplayTitle", song_name),
                 new XElement("DisplayTitleShort", song_name),
-                new XElement("Number", book.SongNumber),
+                new XElement("Number", song_number),
                 new XElement("SongBookName", book.SongBookName),
                 new XElement("Keys"),
                 new XElement("StyleName", book.StyleName),
-                new XElement("Title", book.Title),
+                new XElement("Title", song_name),
                 new XElement("SelectedVersion", book.SelectedVersion),
                 new XElement("Language", "All"),
                 new XElement("SongBookPrefix", song_type) // TODO add values
@@ -47,6 +47,15 @@ namespace PlanningCenter_to_OPS.Actions
             return doc;
         }
 
+        internal static string RegexCaseString(bool case_sensitive)
+        {
+            if (case_sensitive)
+            {
+                return @"^{0}";
+            }
+            return @"^(?i){0}";
+        }
+
         internal static XElement GetSongs(Config config, Structs.SongList song_list)
         {
             XElement xml_list = new XElement("Items");
@@ -54,12 +63,20 @@ namespace PlanningCenter_to_OPS.Actions
             {
                 if (x.attributes.item_type == "song")
                 {
-                    if (Decimal.TryParse(x.attributes.title.Split()[0], out _))
+                    Match isOpw = new Regex(
+                        String.Format(RegexCaseString(config.opw_case_sensitive),
+                        config.opw_selector.Replace("*", "(\\d*)")))
+                            .Match(x.attributes.title);
+                    Match isKopw = new Regex(
+                        String.Format(RegexCaseString(config.kopw_case_sensitive),
+                        config.kopw_selector.Replace("*", "(\\d*)")))
+                            .Match(x.attributes.title);
+                    if (isOpw.Value.Length > 0 && config.opw_selector_enabled)
                     {
-                        xml_list.Add(SongNode(x.attributes.title, "opw"));
-                    } else if (x.attributes.title.Split()[0].ToLower() == "kopw")
+                        xml_list.Add(SongNode(x.attributes.title, "opw", isOpw.Groups[1].Value.TrimStart('0')));
+                    } else if (isKopw.Value.Length > 0 && config.kopw_selector_enabled)
                     {
-                        xml_list.Add(SongNode(x.attributes.title, "kopw"));
+                        xml_list.Add(SongNode(x.attributes.title, "kopw", isKopw.Groups[1].Value.TrimStart('0')));
                     } else
                     {
                         LyricsToFile.ToFile(config, x);

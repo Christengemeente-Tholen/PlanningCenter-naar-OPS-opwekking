@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net;
 using System.Windows.Forms;
+using System.ComponentModel;
 using PlanningCenter_to_OPS.Actions;
 
 namespace PlanningCenter_to_OPS
@@ -94,6 +96,26 @@ namespace PlanningCenter_to_OPS
                 {
                     MessageBox.Show(ex.Message);
                 }
+            }
+        }
+
+        private void EditOpsSkipList_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start("C:\\ProgramData\\Stichting Opwekking\\OPS 8\\opsSkipList.txt");
+            } catch (Win32Exception winE)
+            {
+                MessageBox.Show(winE.Message);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (var edit_search = new EditSearchForm())
+            {
+                DialogResult result = edit_search.ShowDialog();
+                this.RefreshItems();
             }
         }
     }
