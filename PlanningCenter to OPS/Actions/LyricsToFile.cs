@@ -2,16 +2,13 @@
 using System.Linq;
 using System.IO;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace PlanningCenter_to_OPS.Actions
 {
     internal class LyricsToFile
     {
-        private static readonly string[] RemovedText = {
-            "Chorus 1",
-            "Chorus 2",
-            "Chorus 3",
-            "Chorus 4",
+        private static readonly string[] removed_text = {
             "Verse 1",
             "Verse 2",
             "Verse 3",
@@ -30,7 +27,6 @@ namespace PlanningCenter_to_OPS.Actions
             "(Interlude)",
             "(REPEAT)",
 
-            "Refrein:",
             "</b>"
         };
 
@@ -47,9 +43,24 @@ namespace PlanningCenter_to_OPS.Actions
 
                 foreach (string line in current_lyrics)
                 {
-                    if (!RemovedText.Any(s => line.Contains(s)))
+                    // if value not in RemovedText
+                    if (!removed_text.Any(s => line.Contains(s)))
                     {
-                        cleaned_lyrics += line + "\r\n";
+                        // replace chorus with ops eqivelant
+                        Dictionary<string, string> translate_to_ops = new Dictionary<string, string>() {
+                            { "Chorus 1", "Refrein 1:"},
+                            { "Chorus 2", "Refrein 2:"},
+                            { "Chorus 3", "Refrein 3:"}
+                        };
+
+                        string translated_ops;
+                        if (translate_to_ops.TryGetValue(line, out translated_ops))
+                        {
+                            cleaned_lyrics += translated_ops + "\r\n";
+                        } else
+                        {
+                            cleaned_lyrics += line + "\r\n";
+                        }
                     }
                 }
 
