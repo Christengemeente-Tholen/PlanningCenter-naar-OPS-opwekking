@@ -102,6 +102,7 @@ namespace PlanningCenter_to_OPS.Actions
 
             SaveFileDialog oSaveFileDialog = new SaveFileDialog();
             oSaveFileDialog.Filter = "OPS Playlist (*.plsx) | *.plsx";
+            oSaveFileDialog.FileName = String.Format("Playlist_{0:yyyy-MM-dd}.plsx", localTime);
             oSaveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\OPS\\Playlist";
             if (oSaveFileDialog.ShowDialog() == DialogResult.OK)
             {
