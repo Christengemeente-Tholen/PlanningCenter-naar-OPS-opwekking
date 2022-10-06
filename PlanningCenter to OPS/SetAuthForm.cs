@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace PlanningCenter_to_OPS
@@ -39,7 +40,7 @@ namespace PlanningCenter_to_OPS
         private void ApiLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             apiLink.LinkVisited = true;
-            System.Diagnostics.Process.Start("https://api.planningcenteronline.com/oauth/applications");
+            Process.Start(new ProcessStartInfo() { FileName = "https://api.planningcenteronline.com/oauth/applications", UseShellExecute = true });
         }
 
         private void Save()

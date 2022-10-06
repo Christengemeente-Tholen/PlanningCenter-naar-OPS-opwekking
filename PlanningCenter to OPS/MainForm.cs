@@ -34,12 +34,13 @@ namespace PlanningCenter_to_OPS
             {
                 OrganisationName.Text = "Gekoppeld aan: " + Api.GetOrg(config).data.attributes.name;
                 ServiceTypesInfo = UpdateView.UpdateServiceType(config, ServiceTypeSelector.Items);
+                Console.WriteLine(ServiceTypesInfo);
             }
-            catch (WebException e)
+            catch (NotImplementedException e)
             {
                 ServiceTypeSelector.Items.Clear();
-                Console.WriteLine(((HttpWebResponse)e.Response).StatusCode);
-                OrganisationName.Text = "Gekoppeld aan: " + "niet gekoppeld / " + ((HttpWebResponse)e.Response).StatusCode;
+                Console.WriteLine(e.Message);
+                OrganisationName.Text = "Gekoppeld aan: " + "niet gekoppeld / " + e.Message;
             }
         }
 
@@ -103,7 +104,7 @@ namespace PlanningCenter_to_OPS
         {
             try
             {
-                Process.Start("C:\\ProgramData\\Stichting Opwekking\\OPS 8\\opsSkipList.txt");
+                Process.Start(new ProcessStartInfo() { FileName = "C:\\ProgramData\\Stichting Opwekking\\OPS 8\\opsSkipList.txt", UseShellExecute = true });
             } catch (Win32Exception winE)
             {
                 MessageBox.Show(winE.Message);
