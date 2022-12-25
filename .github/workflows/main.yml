@@ -13,8 +13,9 @@ jobs:
     
     - name: setup MS-build
       uses: microsoft/setup-msbuild@v1
-    
-    - name: Build
+    - name: Nuget restore
+      run: nuget restore 
+    - name: Build "PlanningCenter to OPS.sln"
       run: msbuild "PlanningCenter to OPS.sln" /p:Configuration=Release /p:Platform="Any CPU"
     - name: release
       uses: zendesk/action-create-release@v1
