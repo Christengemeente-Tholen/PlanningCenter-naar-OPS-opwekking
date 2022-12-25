@@ -11,3 +11,6 @@ https://www.opwekking.nl/uitgaven/ops-pro
 
 Resultaat:
 ![image](https://user-images.githubusercontent.com/22680656/171613861-f72c0dda-4186-4dac-a9d7-5e0830ba05a8.png)
+
+Download:
+https://github.com/zefanjajobse/PlanningCenter-naar-OPS-opwekking-/releases/latest
