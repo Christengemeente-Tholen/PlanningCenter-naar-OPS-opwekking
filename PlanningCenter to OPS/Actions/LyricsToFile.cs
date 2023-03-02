@@ -16,6 +16,11 @@ namespace PlanningCenter_to_OPS.Actions
             "Verse 3",
             "Verse 4",
             "Verse 5",
+            "Couplet 1",
+            "Couplet 2",
+            "Couplet 3",
+            "Couplet 4",
+            "Couplet 5",
             "(Bridge",
             "Misc 1",
             "Misc 2",
@@ -29,7 +34,7 @@ namespace PlanningCenter_to_OPS.Actions
             "(Interlude)",
             "(REPEAT)",
             "Verhoging",
-            "</b>"
+            "</b>",
         };
 
         public static string ReplaceWordChars(string text)
