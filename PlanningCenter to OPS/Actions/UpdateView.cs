@@ -73,9 +73,11 @@ namespace PlanningCenter_to_OPS.Actions
                             }
                             items.Add(current_plan + " " + i);
                             ServiceTypes.Add(current_plan + " " + i, x.links.self);
+                        } else
+                        {
+                            items.Add(current_plan);
+                            ServiceTypes.Add(current_plan, x.links.self);
                         }
-                        items.Add(current_plan);
-                        ServiceTypes.Add(current_plan, x.links.self);
                     });
                 });
 
