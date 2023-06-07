@@ -28,6 +28,7 @@ namespace PlanningCenter_to_OPS.Actions
             "Misc 4",
             "Misc 5",
             "(Pre-Chorus)",
+            "Pre-Chorus",
             "INTERMEZZO",
             "INTRO",
             "(TAG)",
