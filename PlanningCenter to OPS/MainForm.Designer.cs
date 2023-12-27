@@ -29,151 +29,175 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.EditLogin = new System.Windows.Forms.Button();
-            this.OrganisationName = new System.Windows.Forms.Label();
-            this.ServiceTypeSelector = new System.Windows.Forms.ComboBox();
-            this.PlanSelector = new System.Windows.Forms.ComboBox();
-            this.ServiceTypeText = new System.Windows.Forms.Label();
-            this.ServicePlanLabel = new System.Windows.Forms.Label();
-            this.SaveButton = new System.Windows.Forms.Button();
-            this.SongLocationLabel = new System.Windows.Forms.Label();
-            this.EditSongLocation = new System.Windows.Forms.Button();
-            this.EditOpsSkipList = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            EditLogin = new System.Windows.Forms.Button();
+            OrganisationName = new System.Windows.Forms.Label();
+            ServiceTypeSelector = new System.Windows.Forms.ComboBox();
+            PlanSelector = new System.Windows.Forms.ComboBox();
+            ServiceTypeText = new System.Windows.Forms.Label();
+            ServicePlanLabel = new System.Windows.Forms.Label();
+            SaveButton = new System.Windows.Forms.Button();
+            SongLocationLabel = new System.Windows.Forms.Label();
+            EditSongLocation = new System.Windows.Forms.Button();
+            EditOpsSkipList = new System.Windows.Forms.Button();
+            button1 = new System.Windows.Forms.Button();
+            ReadSongs = new System.Windows.Forms.Button();
+            SuspendLayout();
             // 
             // EditLogin
             // 
-            this.EditLogin.Location = new System.Drawing.Point(615, 22);
-            this.EditLogin.Name = "EditLogin";
-            this.EditLogin.Size = new System.Drawing.Size(145, 42);
-            this.EditLogin.TabIndex = 0;
-            this.EditLogin.Text = "Bewerken";
-            this.EditLogin.UseVisualStyleBackColor = true;
-            this.EditLogin.Click += new System.EventHandler(this.EditLogin_Click);
+            EditLogin.Location = new System.Drawing.Point(308, 11);
+            EditLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            EditLogin.Name = "EditLogin";
+            EditLogin.Size = new System.Drawing.Size(72, 21);
+            EditLogin.TabIndex = 0;
+            EditLogin.Text = "Bewerken";
+            EditLogin.UseVisualStyleBackColor = true;
+            EditLogin.Click += EditLogin_Click;
             // 
             // OrganisationName
             // 
-            this.OrganisationName.AutoSize = true;
-            this.OrganisationName.Location = new System.Drawing.Point(39, 31);
-            this.OrganisationName.Name = "OrganisationName";
-            this.OrganisationName.Size = new System.Drawing.Size(170, 25);
-            this.OrganisationName.TabIndex = 1;
-            this.OrganisationName.Text = "Gekoppeld aan: ";
+            OrganisationName.AutoSize = true;
+            OrganisationName.Location = new System.Drawing.Point(20, 16);
+            OrganisationName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            OrganisationName.Name = "OrganisationName";
+            OrganisationName.Size = new System.Drawing.Size(92, 15);
+            OrganisationName.TabIndex = 1;
+            OrganisationName.Text = "Gekoppeld aan: ";
             // 
             // ServiceTypeSelector
             // 
-            this.ServiceTypeSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ServiceTypeSelector.FormattingEnabled = true;
-            this.ServiceTypeSelector.Location = new System.Drawing.Point(207, 119);
-            this.ServiceTypeSelector.Name = "ServiceTypeSelector";
-            this.ServiceTypeSelector.Size = new System.Drawing.Size(552, 33);
-            this.ServiceTypeSelector.Sorted = true;
-            this.ServiceTypeSelector.TabIndex = 2;
-            this.ServiceTypeSelector.SelectedIndexChanged += new System.EventHandler(this.ServiceTypeSelector_SelectedIndexChanged);
+            ServiceTypeSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            ServiceTypeSelector.FormattingEnabled = true;
+            ServiceTypeSelector.Location = new System.Drawing.Point(104, 60);
+            ServiceTypeSelector.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            ServiceTypeSelector.Name = "ServiceTypeSelector";
+            ServiceTypeSelector.Size = new System.Drawing.Size(278, 23);
+            ServiceTypeSelector.Sorted = true;
+            ServiceTypeSelector.TabIndex = 2;
+            ServiceTypeSelector.SelectedIndexChanged += ServiceTypeSelector_SelectedIndexChanged;
             // 
             // PlanSelector
             // 
-            this.PlanSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.PlanSelector.FormattingEnabled = true;
-            this.PlanSelector.Location = new System.Drawing.Point(207, 165);
-            this.PlanSelector.Name = "PlanSelector";
-            this.PlanSelector.Size = new System.Drawing.Size(552, 33);
-            this.PlanSelector.Sorted = true;
-            this.PlanSelector.TabIndex = 3;
-            this.PlanSelector.SelectedIndexChanged += new System.EventHandler(this.PlanSelector_SelectedIndexChanged);
+            PlanSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            PlanSelector.FormattingEnabled = true;
+            PlanSelector.Location = new System.Drawing.Point(104, 82);
+            PlanSelector.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            PlanSelector.Name = "PlanSelector";
+            PlanSelector.Size = new System.Drawing.Size(278, 23);
+            PlanSelector.Sorted = true;
+            PlanSelector.TabIndex = 3;
+            PlanSelector.SelectedIndexChanged += PlanSelector_SelectedIndexChanged;
             // 
             // ServiceTypeText
             // 
-            this.ServiceTypeText.AutoSize = true;
-            this.ServiceTypeText.Location = new System.Drawing.Point(39, 122);
-            this.ServiceTypeText.Name = "ServiceTypeText";
-            this.ServiceTypeText.Size = new System.Drawing.Size(144, 25);
-            this.ServiceTypeText.TabIndex = 4;
-            this.ServiceTypeText.Text = "Service Type:";
+            ServiceTypeText.AutoSize = true;
+            ServiceTypeText.Location = new System.Drawing.Point(20, 61);
+            ServiceTypeText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            ServiceTypeText.Name = "ServiceTypeText";
+            ServiceTypeText.Size = new System.Drawing.Size(74, 15);
+            ServiceTypeText.TabIndex = 4;
+            ServiceTypeText.Text = "Service Type:";
             // 
             // ServicePlanLabel
             // 
-            this.ServicePlanLabel.AutoSize = true;
-            this.ServicePlanLabel.Location = new System.Drawing.Point(39, 167);
-            this.ServicePlanLabel.Name = "ServicePlanLabel";
-            this.ServicePlanLabel.Size = new System.Drawing.Size(61, 25);
-            this.ServicePlanLabel.TabIndex = 5;
-            this.ServicePlanLabel.Text = "Plan:";
+            ServicePlanLabel.AutoSize = true;
+            ServicePlanLabel.Location = new System.Drawing.Point(20, 84);
+            ServicePlanLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            ServicePlanLabel.Name = "ServicePlanLabel";
+            ServicePlanLabel.Size = new System.Drawing.Size(33, 15);
+            ServicePlanLabel.TabIndex = 5;
+            ServicePlanLabel.Text = "Plan:";
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(615, 220);
-            this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(145, 42);
-            this.SaveButton.TabIndex = 6;
-            this.SaveButton.Text = "Opslaan";
-            this.SaveButton.UseVisualStyleBackColor = true;
-            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            SaveButton.Location = new System.Drawing.Point(308, 110);
+            SaveButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            SaveButton.Name = "SaveButton";
+            SaveButton.Size = new System.Drawing.Size(72, 21);
+            SaveButton.TabIndex = 6;
+            SaveButton.Text = "Opslaan";
+            SaveButton.UseVisualStyleBackColor = true;
+            SaveButton.Click += SaveButton_Click;
             // 
             // SongLocationLabel
             // 
-            this.SongLocationLabel.AutoSize = true;
-            this.SongLocationLabel.Location = new System.Drawing.Point(39, 73);
-            this.SongLocationLabel.Name = "SongLocationLabel";
-            this.SongLocationLabel.Size = new System.Drawing.Size(128, 25);
-            this.SongLocationLabel.TabIndex = 7;
-            this.SongLocationLabel.Text = "Lied locatie:";
+            SongLocationLabel.AutoSize = true;
+            SongLocationLabel.Location = new System.Drawing.Point(20, 36);
+            SongLocationLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            SongLocationLabel.Name = "SongLocationLabel";
+            SongLocationLabel.Size = new System.Drawing.Size(70, 15);
+            SongLocationLabel.TabIndex = 7;
+            SongLocationLabel.Text = "Lied locatie:";
             // 
             // EditSongLocation
             // 
-            this.EditSongLocation.Location = new System.Drawing.Point(615, 68);
-            this.EditSongLocation.Name = "EditSongLocation";
-            this.EditSongLocation.Size = new System.Drawing.Size(145, 42);
-            this.EditSongLocation.TabIndex = 8;
-            this.EditSongLocation.Text = "Bewerken";
-            this.EditSongLocation.UseVisualStyleBackColor = true;
-            this.EditSongLocation.Click += new System.EventHandler(this.EditSongLocation_Click);
+            EditSongLocation.Location = new System.Drawing.Point(308, 34);
+            EditSongLocation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            EditSongLocation.Name = "EditSongLocation";
+            EditSongLocation.Size = new System.Drawing.Size(72, 21);
+            EditSongLocation.TabIndex = 8;
+            EditSongLocation.Text = "Bewerken";
+            EditSongLocation.UseVisualStyleBackColor = true;
+            EditSongLocation.Click += EditSongLocation_Click;
             // 
             // EditOpsSkipList
             // 
-            this.EditOpsSkipList.Location = new System.Drawing.Point(338, 220);
-            this.EditOpsSkipList.Name = "EditOpsSkipList";
-            this.EditOpsSkipList.Size = new System.Drawing.Size(270, 42);
-            this.EditOpsSkipList.TabIndex = 9;
-            this.EditOpsSkipList.Text = "OPS Skiplist bewerken";
-            this.EditOpsSkipList.UseVisualStyleBackColor = true;
-            this.EditOpsSkipList.Click += new System.EventHandler(this.EditOpsSkipList_Click);
+            EditOpsSkipList.Location = new System.Drawing.Point(169, 110);
+            EditOpsSkipList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            EditOpsSkipList.Name = "EditOpsSkipList";
+            EditOpsSkipList.Size = new System.Drawing.Size(135, 21);
+            EditOpsSkipList.TabIndex = 9;
+            EditOpsSkipList.Text = "OPS Skiplist bewerken";
+            EditOpsSkipList.UseVisualStyleBackColor = true;
+            EditOpsSkipList.Click += EditOpsSkipList_Click;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(44, 220);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(287, 42);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Liedherkenning bewerken";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            button1.Location = new System.Drawing.Point(22, 110);
+            button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(144, 21);
+            button1.TabIndex = 10;
+            button1.Text = "Liedherkenning bewerken";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // ReadSongs
+            // 
+            ReadSongs.Location = new System.Drawing.Point(24, 135);
+            ReadSongs.Margin = new System.Windows.Forms.Padding(2);
+            ReadSongs.Name = "ReadSongs";
+            ReadSongs.Size = new System.Drawing.Size(358, 21);
+            ReadSongs.TabIndex = 11;
+            ReadSongs.Text = "Lees liedjes";
+            ReadSongs.UseVisualStyleBackColor = true;
+            ReadSongs.Click += ReadSongs_Click;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(800, 281);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.EditOpsSkipList);
-            this.Controls.Add(this.EditSongLocation);
-            this.Controls.Add(this.SongLocationLabel);
-            this.Controls.Add(this.SaveButton);
-            this.Controls.Add(this.ServicePlanLabel);
-            this.Controls.Add(this.ServiceTypeText);
-            this.Controls.Add(this.PlanSelector);
-            this.Controls.Add(this.ServiceTypeSelector);
-            this.Controls.Add(this.OrganisationName);
-            this.Controls.Add(this.EditLogin);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.Name = "MainForm";
-            this.Text = "Planning center > OPS";
-            this.Load += new System.EventHandler(this.MainForm_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            ClientSize = new System.Drawing.Size(400, 166);
+            Controls.Add(ReadSongs);
+            Controls.Add(button1);
+            Controls.Add(EditOpsSkipList);
+            Controls.Add(EditSongLocation);
+            Controls.Add(SongLocationLabel);
+            Controls.Add(SaveButton);
+            Controls.Add(ServicePlanLabel);
+            Controls.Add(ServiceTypeText);
+            Controls.Add(PlanSelector);
+            Controls.Add(ServiceTypeSelector);
+            Controls.Add(OrganisationName);
+            Controls.Add(EditLogin);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            MaximizeBox = false;
+            Name = "MainForm";
+            Text = "Planning center > OPS";
+            Load += MainForm_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -189,6 +213,7 @@
         private System.Windows.Forms.Button EditSongLocation;
         private System.Windows.Forms.Button EditOpsSkipList;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ReadSongs;
     }
 }
 
