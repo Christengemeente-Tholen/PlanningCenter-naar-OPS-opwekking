@@ -29,135 +29,143 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetAuthForm));
-            this.appIdTextBox = new System.Windows.Forms.TextBox();
-            this.secretTextBox = new System.Windows.Forms.TextBox();
-            this.titleLabel = new System.Windows.Forms.Label();
-            this.apiLink = new System.Windows.Forms.LinkLabel();
-            this.appIdLabel = new System.Windows.Forms.Label();
-            this.secretIdLabel = new System.Windows.Forms.Label();
-            this.titleLabel2 = new System.Windows.Forms.Label();
-            this.titleLabel3 = new System.Windows.Forms.Label();
-            this.saveButton = new System.Windows.Forms.Button();
-            this.cancelButton = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            appIdTextBox = new System.Windows.Forms.TextBox();
+            secretTextBox = new System.Windows.Forms.TextBox();
+            titleLabel = new System.Windows.Forms.Label();
+            apiLink = new System.Windows.Forms.LinkLabel();
+            appIdLabel = new System.Windows.Forms.Label();
+            secretIdLabel = new System.Windows.Forms.Label();
+            titleLabel2 = new System.Windows.Forms.Label();
+            titleLabel3 = new System.Windows.Forms.Label();
+            saveButton = new System.Windows.Forms.Button();
+            cancelButton = new System.Windows.Forms.Button();
+            SuspendLayout();
             // 
             // appIdTextBox
             // 
-            this.appIdTextBox.Location = new System.Drawing.Point(213, 129);
-            this.appIdTextBox.Name = "appIdTextBox";
-            this.appIdTextBox.Size = new System.Drawing.Size(1173, 39);
-            this.appIdTextBox.TabIndex = 0;
-            this.appIdTextBox.TextChanged += new System.EventHandler(this.AppIdTextBox_TextChanged);
+            appIdTextBox.Location = new System.Drawing.Point(106, 64);
+            appIdTextBox.Margin = new System.Windows.Forms.Padding(2);
+            appIdTextBox.Name = "appIdTextBox";
+            appIdTextBox.Size = new System.Drawing.Size(588, 23);
+            appIdTextBox.TabIndex = 0;
+            appIdTextBox.TextChanged += AppIdTextBox_TextChanged;
             // 
             // secretTextBox
             // 
-            this.secretTextBox.Location = new System.Drawing.Point(213, 172);
-            this.secretTextBox.Name = "secretTextBox";
-            this.secretTextBox.Size = new System.Drawing.Size(1173, 39);
-            this.secretTextBox.TabIndex = 1;
-            this.secretTextBox.TextChanged += new System.EventHandler(this.SecretTextBox_TextChanged);
+            secretTextBox.Location = new System.Drawing.Point(106, 93);
+            secretTextBox.Margin = new System.Windows.Forms.Padding(2);
+            secretTextBox.Name = "secretTextBox";
+            secretTextBox.Size = new System.Drawing.Size(588, 23);
+            secretTextBox.TabIndex = 1;
+            secretTextBox.TextChanged += SecretTextBox_TextChanged;
             // 
             // titleLabel
             // 
-            this.titleLabel.AutoSize = true;
-            this.titleLabel.Location = new System.Drawing.Point(40, 24);
-            this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(1171, 32);
-            this.titleLabel.TabIndex = 2;
-            this.titleLabel.Text = "Om dit progamma aan planningcenter te koppelen, moet er een personal access token" +
-    " aangemaakt worden.";
+            titleLabel.AutoSize = true;
+            titleLabel.Location = new System.Drawing.Point(20, 12);
+            titleLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            titleLabel.Name = "titleLabel";
+            titleLabel.Size = new System.Drawing.Size(577, 15);
+            titleLabel.TabIndex = 2;
+            titleLabel.Text = "Om dit progamma aan planningcenter te koppelen, moet er een personal access token aangemaakt worden.";
             // 
             // apiLink
             // 
-            this.apiLink.AutoSize = true;
-            this.apiLink.Location = new System.Drawing.Point(393, 56);
-            this.apiLink.Name = "apiLink";
-            this.apiLink.Size = new System.Drawing.Size(614, 32);
-            this.apiLink.TabIndex = 3;
-            this.apiLink.TabStop = true;
-            this.apiLink.Text = "https://api.planningcenteronline.com/oauth/applications";
-            this.apiLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ApiLink_LinkClicked);
+            apiLink.AutoSize = true;
+            apiLink.Location = new System.Drawing.Point(196, 28);
+            apiLink.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            apiLink.Name = "apiLink";
+            apiLink.Size = new System.Drawing.Size(311, 15);
+            apiLink.TabIndex = 3;
+            apiLink.TabStop = true;
+            apiLink.Text = "https://api.planningcenteronline.com/oauth/applications";
+            apiLink.LinkClicked += ApiLink_LinkClicked;
             // 
             // appIdLabel
             // 
-            this.appIdLabel.AutoSize = true;
-            this.appIdLabel.Location = new System.Drawing.Point(44, 132);
-            this.appIdLabel.Name = "appIdLabel";
-            this.appIdLabel.Size = new System.Drawing.Size(169, 32);
-            this.appIdLabel.TabIndex = 4;
-            this.appIdLabel.Text = "Application ID:";
+            appIdLabel.AutoSize = true;
+            appIdLabel.Location = new System.Drawing.Point(22, 67);
+            appIdLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            appIdLabel.Name = "appIdLabel";
+            appIdLabel.Size = new System.Drawing.Size(85, 15);
+            appIdLabel.TabIndex = 4;
+            appIdLabel.Text = "Application ID:";
             // 
             // secretIdLabel
             // 
-            this.secretIdLabel.AutoSize = true;
-            this.secretIdLabel.Location = new System.Drawing.Point(44, 171);
-            this.secretIdLabel.Name = "secretIdLabel";
-            this.secretIdLabel.Size = new System.Drawing.Size(85, 32);
-            this.secretIdLabel.TabIndex = 5;
-            this.secretIdLabel.Text = "Secret:";
+            secretIdLabel.AutoSize = true;
+            secretIdLabel.Location = new System.Drawing.Point(22, 96);
+            secretIdLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            secretIdLabel.Name = "secretIdLabel";
+            secretIdLabel.Size = new System.Drawing.Size(42, 15);
+            secretIdLabel.TabIndex = 5;
+            secretIdLabel.Text = "Secret:";
             // 
             // titleLabel2
             // 
-            this.titleLabel2.AutoSize = true;
-            this.titleLabel2.Location = new System.Drawing.Point(40, 56);
-            this.titleLabel2.Name = "titleLabel2";
-            this.titleLabel2.Size = new System.Drawing.Size(359, 32);
-            this.titleLabel2.TabIndex = 6;
-            this.titleLabel2.Text = "Die kan aangemaakt worden op:";
+            titleLabel2.AutoSize = true;
+            titleLabel2.Location = new System.Drawing.Point(20, 28);
+            titleLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            titleLabel2.Name = "titleLabel2";
+            titleLabel2.Size = new System.Drawing.Size(177, 15);
+            titleLabel2.TabIndex = 6;
+            titleLabel2.Text = "Die kan aangemaakt worden op:";
             // 
             // titleLabel3
             // 
-            this.titleLabel3.AutoSize = true;
-            this.titleLabel3.Location = new System.Drawing.Point(40, 89);
-            this.titleLabel3.Name = "titleLabel3";
-            this.titleLabel3.Size = new System.Drawing.Size(1346, 32);
-            this.titleLabel3.TabIndex = 7;
-            this.titleLabel3.Text = "Vul na het aanmaken van een personal access token de application id en secret van" +
-    " uw planningcenter account hieronder in:";
+            titleLabel3.AutoSize = true;
+            titleLabel3.Location = new System.Drawing.Point(20, 44);
+            titleLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            titleLabel3.Name = "titleLabel3";
+            titleLabel3.Size = new System.Drawing.Size(661, 15);
+            titleLabel3.TabIndex = 7;
+            titleLabel3.Text = "Vul na het aanmaken van een personal access token de application id en secret van uw planningcenter account hieronder in:";
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(435, 219);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(188, 52);
-            this.saveButton.TabIndex = 8;
-            this.saveButton.Text = "Opslaan";
-            this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            saveButton.Location = new System.Drawing.Point(218, 123);
+            saveButton.Margin = new System.Windows.Forms.Padding(2);
+            saveButton.Name = "saveButton";
+            saveButton.Size = new System.Drawing.Size(94, 26);
+            saveButton.TabIndex = 8;
+            saveButton.Text = "Opslaan";
+            saveButton.UseVisualStyleBackColor = true;
+            saveButton.Click += SaveButton_Click;
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(789, 219);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(186, 52);
-            this.cancelButton.TabIndex = 9;
-            this.cancelButton.Text = "Annuleren";
-            this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            cancelButton.Location = new System.Drawing.Point(394, 122);
+            cancelButton.Margin = new System.Windows.Forms.Padding(2);
+            cancelButton.Name = "cancelButton";
+            cancelButton.Size = new System.Drawing.Size(93, 26);
+            cancelButton.TabIndex = 9;
+            cancelButton.Text = "Annuleren";
+            cancelButton.UseVisualStyleBackColor = true;
+            cancelButton.Click += CancelButton_Click;
             // 
             // SetAuthForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1417, 286);
-            this.Controls.Add(this.cancelButton);
-            this.Controls.Add(this.saveButton);
-            this.Controls.Add(this.titleLabel3);
-            this.Controls.Add(this.titleLabel2);
-            this.Controls.Add(this.secretIdLabel);
-            this.Controls.Add(this.appIdLabel);
-            this.Controls.Add(this.apiLink);
-            this.Controls.Add(this.titleLabel);
-            this.Controls.Add(this.secretTextBox);
-            this.Controls.Add(this.appIdTextBox);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.Name = "SetAuthForm";
-            this.Text = "Api koppelen";
-            this.Load += new System.EventHandler(this.SetAuthForm_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            ClientSize = new System.Drawing.Size(708, 161);
+            Controls.Add(cancelButton);
+            Controls.Add(saveButton);
+            Controls.Add(titleLabel3);
+            Controls.Add(titleLabel2);
+            Controls.Add(secretIdLabel);
+            Controls.Add(appIdLabel);
+            Controls.Add(apiLink);
+            Controls.Add(titleLabel);
+            Controls.Add(secretTextBox);
+            Controls.Add(appIdTextBox);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            Margin = new System.Windows.Forms.Padding(2);
+            MaximizeBox = false;
+            Name = "SetAuthForm";
+            Text = "Api koppelen";
+            Load += SetAuthForm_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

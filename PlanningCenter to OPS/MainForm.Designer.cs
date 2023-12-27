@@ -45,10 +45,10 @@
             // 
             // EditLogin
             // 
-            EditLogin.Location = new System.Drawing.Point(308, 11);
-            EditLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            EditLogin.Location = new System.Drawing.Point(314, 13);
+            EditLogin.Margin = new System.Windows.Forms.Padding(2);
             EditLogin.Name = "EditLogin";
-            EditLogin.Size = new System.Drawing.Size(72, 21);
+            EditLogin.Size = new System.Drawing.Size(72, 25);
             EditLogin.TabIndex = 0;
             EditLogin.Text = "Bewerken";
             EditLogin.UseVisualStyleBackColor = true;
@@ -57,7 +57,7 @@
             // OrganisationName
             // 
             OrganisationName.AutoSize = true;
-            OrganisationName.Location = new System.Drawing.Point(20, 16);
+            OrganisationName.Location = new System.Drawing.Point(17, 18);
             OrganisationName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             OrganisationName.Name = "OrganisationName";
             OrganisationName.Size = new System.Drawing.Size(92, 15);
@@ -68,10 +68,10 @@
             // 
             ServiceTypeSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             ServiceTypeSelector.FormattingEnabled = true;
-            ServiceTypeSelector.Location = new System.Drawing.Point(104, 60);
-            ServiceTypeSelector.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            ServiceTypeSelector.Location = new System.Drawing.Point(101, 69);
+            ServiceTypeSelector.Margin = new System.Windows.Forms.Padding(2);
             ServiceTypeSelector.Name = "ServiceTypeSelector";
-            ServiceTypeSelector.Size = new System.Drawing.Size(278, 23);
+            ServiceTypeSelector.Size = new System.Drawing.Size(285, 23);
             ServiceTypeSelector.Sorted = true;
             ServiceTypeSelector.TabIndex = 2;
             ServiceTypeSelector.SelectedIndexChanged += ServiceTypeSelector_SelectedIndexChanged;
@@ -80,10 +80,10 @@
             // 
             PlanSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             PlanSelector.FormattingEnabled = true;
-            PlanSelector.Location = new System.Drawing.Point(104, 82);
-            PlanSelector.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            PlanSelector.Location = new System.Drawing.Point(101, 97);
+            PlanSelector.Margin = new System.Windows.Forms.Padding(2);
             PlanSelector.Name = "PlanSelector";
-            PlanSelector.Size = new System.Drawing.Size(278, 23);
+            PlanSelector.Size = new System.Drawing.Size(285, 23);
             PlanSelector.Sorted = true;
             PlanSelector.TabIndex = 3;
             PlanSelector.SelectedIndexChanged += PlanSelector_SelectedIndexChanged;
@@ -91,7 +91,7 @@
             // ServiceTypeText
             // 
             ServiceTypeText.AutoSize = true;
-            ServiceTypeText.Location = new System.Drawing.Point(20, 61);
+            ServiceTypeText.Location = new System.Drawing.Point(17, 71);
             ServiceTypeText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             ServiceTypeText.Name = "ServiceTypeText";
             ServiceTypeText.Size = new System.Drawing.Size(74, 15);
@@ -101,7 +101,7 @@
             // ServicePlanLabel
             // 
             ServicePlanLabel.AutoSize = true;
-            ServicePlanLabel.Location = new System.Drawing.Point(20, 84);
+            ServicePlanLabel.Location = new System.Drawing.Point(17, 100);
             ServicePlanLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             ServicePlanLabel.Name = "ServicePlanLabel";
             ServicePlanLabel.Size = new System.Drawing.Size(33, 15);
@@ -110,10 +110,10 @@
             // 
             // SaveButton
             // 
-            SaveButton.Location = new System.Drawing.Point(308, 110);
-            SaveButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            SaveButton.Location = new System.Drawing.Point(19, 156);
+            SaveButton.Margin = new System.Windows.Forms.Padding(2);
             SaveButton.Name = "SaveButton";
-            SaveButton.Size = new System.Drawing.Size(72, 21);
+            SaveButton.Size = new System.Drawing.Size(367, 25);
             SaveButton.TabIndex = 6;
             SaveButton.Text = "Opslaan";
             SaveButton.UseVisualStyleBackColor = true;
@@ -122,7 +122,7 @@
             // SongLocationLabel
             // 
             SongLocationLabel.AutoSize = true;
-            SongLocationLabel.Location = new System.Drawing.Point(20, 36);
+            SongLocationLabel.Location = new System.Drawing.Point(17, 43);
             SongLocationLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             SongLocationLabel.Name = "SongLocationLabel";
             SongLocationLabel.Size = new System.Drawing.Size(70, 15);
@@ -131,10 +131,10 @@
             // 
             // EditSongLocation
             // 
-            EditSongLocation.Location = new System.Drawing.Point(308, 34);
-            EditSongLocation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            EditSongLocation.Location = new System.Drawing.Point(314, 40);
+            EditSongLocation.Margin = new System.Windows.Forms.Padding(2);
             EditSongLocation.Name = "EditSongLocation";
-            EditSongLocation.Size = new System.Drawing.Size(72, 21);
+            EditSongLocation.Size = new System.Drawing.Size(72, 25);
             EditSongLocation.TabIndex = 8;
             EditSongLocation.Text = "Bewerken";
             EditSongLocation.UseVisualStyleBackColor = true;
@@ -142,10 +142,10 @@
             // 
             // EditOpsSkipList
             // 
-            EditOpsSkipList.Location = new System.Drawing.Point(169, 110);
-            EditOpsSkipList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            EditOpsSkipList.Location = new System.Drawing.Point(125, 126);
+            EditOpsSkipList.Margin = new System.Windows.Forms.Padding(2);
             EditOpsSkipList.Name = "EditOpsSkipList";
-            EditOpsSkipList.Size = new System.Drawing.Size(135, 21);
+            EditOpsSkipList.Size = new System.Drawing.Size(135, 25);
             EditOpsSkipList.TabIndex = 9;
             EditOpsSkipList.Text = "OPS Skiplist bewerken";
             EditOpsSkipList.UseVisualStyleBackColor = true;
@@ -153,23 +153,23 @@
             // 
             // button1
             // 
-            button1.Location = new System.Drawing.Point(22, 110);
-            button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            button1.Location = new System.Drawing.Point(19, 126);
+            button1.Margin = new System.Windows.Forms.Padding(2);
             button1.Name = "button1";
-            button1.Size = new System.Drawing.Size(144, 21);
+            button1.Size = new System.Drawing.Size(102, 25);
             button1.TabIndex = 10;
-            button1.Text = "Liedherkenning bewerken";
+            button1.Text = "Liedherkenning";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
             // ReadSongs
             // 
-            ReadSongs.Location = new System.Drawing.Point(24, 135);
+            ReadSongs.Location = new System.Drawing.Point(264, 126);
             ReadSongs.Margin = new System.Windows.Forms.Padding(2);
             ReadSongs.Name = "ReadSongs";
-            ReadSongs.Size = new System.Drawing.Size(358, 21);
+            ReadSongs.Size = new System.Drawing.Size(122, 25);
             ReadSongs.TabIndex = 11;
-            ReadSongs.Text = "Lees liedjes";
+            ReadSongs.Text = "Liedtitels exporteren";
             ReadSongs.UseVisualStyleBackColor = true;
             ReadSongs.Click += ReadSongs_Click;
             // 
@@ -177,7 +177,7 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            ClientSize = new System.Drawing.Size(400, 166);
+            ClientSize = new System.Drawing.Size(404, 194);
             Controls.Add(ReadSongs);
             Controls.Add(button1);
             Controls.Add(EditOpsSkipList);
@@ -191,7 +191,7 @@
             Controls.Add(OrganisationName);
             Controls.Add(EditLogin);
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
-            Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            Margin = new System.Windows.Forms.Padding(2);
             MaximizeBox = false;
             Name = "MainForm";
             Text = "Planning center > OPS";
