@@ -11,6 +11,9 @@
         public string kopw_selector;
         public bool opw_case_sensitive;
         public bool kopw_case_sensitive;
+        public string et_abbreviation;
+        public string et_bundle_name;
+        public bool et_enabled;
 
         public Config()
         {
@@ -23,6 +26,9 @@
             kopw_selector = Properties.Settings.Default.kopw_selector;
             opw_case_sensitive = Properties.Settings.Default.opw_case_sensitive;
             kopw_case_sensitive = Properties.Settings.Default.kopw_case_sensitive;
+            et_abbreviation = Properties.Settings.Default.et_abbreviation;
+            et_bundle_name = Properties.Settings.Default.et_bundle_name;
+            et_enabled = Properties.Settings.Default.et_enabled;
         }
 
         public void Update()
@@ -36,6 +42,9 @@
             Properties.Settings.Default.kopw_selector = kopw_selector;
             Properties.Settings.Default.opw_case_sensitive = opw_case_sensitive;
             Properties.Settings.Default.kopw_case_sensitive = kopw_case_sensitive;
+            Properties.Settings.Default.et_abbreviation = et_abbreviation;
+            Properties.Settings.Default.et_bundle_name = et_bundle_name;
+            Properties.Settings.Default.et_enabled = et_enabled;
             Properties.Settings.Default.Save();
         }
     }

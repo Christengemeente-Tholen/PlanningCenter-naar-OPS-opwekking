@@ -29,5 +29,14 @@
     <Setting Name="kopw_case_sensitive" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="et_enabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="et_abbreviation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">et</Value>
+    </Setting>
+    <Setting Name="et_bundle_name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Eigen teksten</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

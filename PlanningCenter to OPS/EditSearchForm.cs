@@ -12,6 +12,9 @@ namespace PlanningCenter_to_OPS
         private bool kopw_selector_enabled;
         private bool opw_case_sensitive;
         private bool kopw_case_sensitive;
+        private string et_bundle_name;
+        private string et_abbreviation;
+        private bool et_enabled;
 
         public EditSearchForm()
         {
@@ -34,6 +37,9 @@ namespace PlanningCenter_to_OPS
             OpwCaseSensitive.Checked = opw_case_sensitive;
             kopw_case_sensitive = config.kopw_case_sensitive;
             KopwCaseSensitive.Checked = kopw_case_sensitive;
+            ETCheckBox.Checked = config.et_enabled;
+            ETAfkortingTextBox.Text = config.et_abbreviation;
+            ETBundelTextBox.Text = config.et_bundle_name;
         }
         private void EditFormClosing(object sender, FormClosingEventArgs e)
         {
@@ -43,6 +49,9 @@ namespace PlanningCenter_to_OPS
                 && !kopw_selector_enabled.Equals(config.kopw_selector_enabled)
                 && !opw_case_sensitive.Equals(config.opw_case_sensitive)
                 && !kopw_case_sensitive.Equals(config.kopw_case_sensitive)
+                && !et_enabled.Equals(config.et_enabled)
+                && !et_abbreviation.Equals(config.et_abbreviation)
+                && !et_bundle_name.Equals(config.et_bundle_name)
                 )
             {
                 DialogResult dialogResult = MessageBox.Show("Je hebt veranderingen die niet opgeslagen zijn, wilt u ze opslaan?", "Liedherkenning bewerken", MessageBoxButtons.YesNo);
@@ -67,6 +76,9 @@ namespace PlanningCenter_to_OPS
                 config.kopw_selector_enabled = kopw_selector_enabled;
                 config.opw_case_sensitive = opw_case_sensitive;
                 config.kopw_case_sensitive = kopw_case_sensitive;
+                config.et_bundle_name = et_bundle_name;
+                config.et_abbreviation = et_abbreviation;
+                config.et_enabled = et_enabled;
                 config.Update();
                 this.Close();
             }
@@ -100,6 +112,21 @@ namespace PlanningCenter_to_OPS
         private void KinderText_TextChanged(object sender, EventArgs e)
         {
             kopw_selector = KinderText.Text;
+        }
+
+        private void ETAfkortingTextBox_TextChanged(object sender, EventArgs e)
+        {
+            et_abbreviation = ETAfkortingTextBox.Text;
+        }
+
+        private void ETBundelTextBox_TextChanged(object sender, EventArgs e)
+        {
+            et_bundle_name = ETBundelTextBox.Text;
+        }
+
+        private void ETCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            et_enabled = ETCheckBox.Checked;
         }
 
         private void SaveButton_Click(object sender, EventArgs e)

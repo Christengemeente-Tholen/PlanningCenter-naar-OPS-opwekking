@@ -1,9 +1,5 @@
-﻿using DocumentFormat.OpenXml.Spreadsheet;
-using PlanningCenter_to_OPS.Structs;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Net;
 using System.Windows.Forms;
 
@@ -12,7 +8,7 @@ namespace PlanningCenter_to_OPS.Actions
 
     internal class UpdateView
     {
-        internal static Dictionary<string, string> UpdateServiceType(Config config, ComboBox combo_box, ComboBox plans_selector)
+        internal static (Dictionary<string, string>, Dictionary<string, string>) UpdateServiceType(Config config, ComboBox combo_box, ComboBox plans_selector, Dictionary<string, string> plans_info)
         {
             combo_box.Items.Clear();
             try
@@ -40,15 +36,15 @@ namespace PlanningCenter_to_OPS.Actions
                 if (combo_box.SelectedIndex == -1 && combo_box.Items.Count > 0)
                 {
                     combo_box.SelectedIndex = 0;
-                    UpdatePlans(config, plans_selector, ServiceTypes[combo_box.SelectedItem.ToString()]);
+                    plans_info = UpdatePlans(config, plans_selector, ServiceTypes[combo_box.SelectedItem.ToString()]);
                 }
 
-                return ServiceTypes;
+                return (ServiceTypes, plans_info);
             }
             catch (WebException e)
             {
                 MessageBox.Show(e.Message);
-                return new Dictionary<string, string>();
+                return (new Dictionary<string, string>(), plans_info);
             }
         }
 

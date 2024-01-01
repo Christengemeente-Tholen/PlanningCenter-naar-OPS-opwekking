@@ -11,7 +11,7 @@
     internal class Init
     {
 
-        internal static BookType GetType(string song_type)
+        internal static BookType GetType(Config config, string song_type)
         {
             if (song_type == "opw")
             {
@@ -21,7 +21,7 @@
                 return new KinderOpwekking();
             } else
             {
-                return new Opwekking();
+                return new EigenTeksten(config);
             }
         }
     }
