@@ -45,6 +45,6 @@ jobs:
         GITHUB_TOKEN: ${{ github.token }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: "PlanningCenter to OPS\\bin\\Release\\net7.0-windows\\win-x64\\publish\\PlanningCenter to OPS.exe"
+        asset_path: "PlanningCenter to OPS\\bin\\Release\\net8.0-windows\\win-x64\\publish\\PlanningCenter to OPS.exe"
         asset_name: "PlanningCenter to OPS.exe"
         asset_content_type: application/exe
