@@ -28,172 +28,183 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.KinderCheckBox = new System.Windows.Forms.CheckBox();
-            this.OpwekkingCheckBox = new System.Windows.Forms.CheckBox();
-            this.OpwekkingQueryLabel = new System.Windows.Forms.Label();
-            this.KinderOpwekkingLabel = new System.Windows.Forms.Label();
-            this.OpwekkingLabel = new System.Windows.Forms.Label();
-            this.KinderText = new System.Windows.Forms.TextBox();
-            this.OpwekkingText = new System.Windows.Forms.TextBox();
-            this.cancelButton = new System.Windows.Forms.Button();
-            this.saveButton = new System.Windows.Forms.Button();
-            this.MusicSelectInfo = new System.Windows.Forms.Label();
-            this.OpwCaseSensitive = new System.Windows.Forms.CheckBox();
-            this.KopwCaseSensitive = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.SuspendLayout();
+            KinderCheckBox = new System.Windows.Forms.CheckBox();
+            OpwekkingCheckBox = new System.Windows.Forms.CheckBox();
+            OpwekkingQueryLabel = new System.Windows.Forms.Label();
+            KinderOpwekkingLabel = new System.Windows.Forms.Label();
+            OpwekkingLabel = new System.Windows.Forms.Label();
+            KinderText = new System.Windows.Forms.TextBox();
+            OpwekkingText = new System.Windows.Forms.TextBox();
+            cancelButton = new System.Windows.Forms.Button();
+            saveButton = new System.Windows.Forms.Button();
+            MusicSelectInfo = new System.Windows.Forms.Label();
+            OpwCaseSensitive = new System.Windows.Forms.CheckBox();
+            KopwCaseSensitive = new System.Windows.Forms.CheckBox();
+            label1 = new System.Windows.Forms.Label();
+            SuspendLayout();
             // 
             // KinderCheckBox
             // 
-            this.KinderCheckBox.AutoSize = true;
-            this.KinderCheckBox.Location = new System.Drawing.Point(634, 162);
-            this.KinderCheckBox.Name = "KinderCheckBox";
-            this.KinderCheckBox.Size = new System.Drawing.Size(160, 29);
-            this.KinderCheckBox.TabIndex = 25;
-            this.KinderCheckBox.Text = "Geactiveerd";
-            this.KinderCheckBox.UseVisualStyleBackColor = true;
-            this.KinderCheckBox.CheckedChanged += new System.EventHandler(this.KinderCheckBox_CheckedChanged);
+            KinderCheckBox.AutoSize = true;
+            KinderCheckBox.Location = new System.Drawing.Point(370, 101);
+            KinderCheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            KinderCheckBox.Name = "KinderCheckBox";
+            KinderCheckBox.Size = new System.Drawing.Size(88, 19);
+            KinderCheckBox.TabIndex = 25;
+            KinderCheckBox.Text = "Geactiveerd";
+            KinderCheckBox.UseVisualStyleBackColor = true;
+            KinderCheckBox.CheckedChanged += KinderCheckBox_CheckedChanged;
             // 
             // OpwekkingCheckBox
             // 
-            this.OpwekkingCheckBox.AutoSize = true;
-            this.OpwekkingCheckBox.Location = new System.Drawing.Point(634, 123);
-            this.OpwekkingCheckBox.Name = "OpwekkingCheckBox";
-            this.OpwekkingCheckBox.Size = new System.Drawing.Size(160, 29);
-            this.OpwekkingCheckBox.TabIndex = 24;
-            this.OpwekkingCheckBox.Text = "Geactiveerd";
-            this.OpwekkingCheckBox.UseVisualStyleBackColor = true;
-            this.OpwekkingCheckBox.CheckedChanged += new System.EventHandler(this.OpwekkingCheckBox_CheckedChanged);
+            OpwekkingCheckBox.AutoSize = true;
+            OpwekkingCheckBox.Location = new System.Drawing.Point(370, 73);
+            OpwekkingCheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            OpwekkingCheckBox.Name = "OpwekkingCheckBox";
+            OpwekkingCheckBox.Size = new System.Drawing.Size(88, 19);
+            OpwekkingCheckBox.TabIndex = 24;
+            OpwekkingCheckBox.Text = "Geactiveerd";
+            OpwekkingCheckBox.UseVisualStyleBackColor = true;
+            OpwekkingCheckBox.CheckedChanged += OpwekkingCheckBox_CheckedChanged;
             // 
             // OpwekkingQueryLabel
             // 
-            this.OpwekkingQueryLabel.AutoSize = true;
-            this.OpwekkingQueryLabel.Location = new System.Drawing.Point(30, 37);
-            this.OpwekkingQueryLabel.Name = "OpwekkingQueryLabel";
-            this.OpwekkingQueryLabel.Size = new System.Drawing.Size(875, 25);
-            this.OpwekkingQueryLabel.TabIndex = 23;
-            this.OpwekkingQueryLabel.Text = "Hier kunt u aanpassen wanneer een lied word herkend als een specifiek type binnen" +
-    " OPS.";
+            OpwekkingQueryLabel.AutoSize = true;
+            OpwekkingQueryLabel.Location = new System.Drawing.Point(18, 20);
+            OpwekkingQueryLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            OpwekkingQueryLabel.Name = "OpwekkingQueryLabel";
+            OpwekkingQueryLabel.Size = new System.Drawing.Size(474, 15);
+            OpwekkingQueryLabel.TabIndex = 23;
+            OpwekkingQueryLabel.Text = "Hier kunt u aanpassen wanneer een lied word herkend als een specifiek type binnen OPS.";
             // 
             // KinderOpwekkingLabel
             // 
-            this.KinderOpwekkingLabel.AutoSize = true;
-            this.KinderOpwekkingLabel.Location = new System.Drawing.Point(30, 163);
-            this.KinderOpwekkingLabel.Name = "KinderOpwekkingLabel";
-            this.KinderOpwekkingLabel.Size = new System.Drawing.Size(182, 25);
-            this.KinderOpwekkingLabel.TabIndex = 22;
-            this.KinderOpwekkingLabel.Text = "Kinderopwekking:";
+            KinderOpwekkingLabel.AutoSize = true;
+            KinderOpwekkingLabel.Location = new System.Drawing.Point(18, 102);
+            KinderOpwekkingLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            KinderOpwekkingLabel.Name = "KinderOpwekkingLabel";
+            KinderOpwekkingLabel.Size = new System.Drawing.Size(102, 15);
+            KinderOpwekkingLabel.TabIndex = 22;
+            KinderOpwekkingLabel.Text = "Kinderopwekking:";
             // 
             // OpwekkingLabel
             // 
-            this.OpwekkingLabel.AutoSize = true;
-            this.OpwekkingLabel.Location = new System.Drawing.Point(30, 128);
-            this.OpwekkingLabel.Name = "OpwekkingLabel";
-            this.OpwekkingLabel.Size = new System.Drawing.Size(124, 25);
-            this.OpwekkingLabel.TabIndex = 21;
-            this.OpwekkingLabel.Text = "Opwekking:";
+            OpwekkingLabel.AutoSize = true;
+            OpwekkingLabel.Location = new System.Drawing.Point(18, 76);
+            OpwekkingLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            OpwekkingLabel.Name = "OpwekkingLabel";
+            OpwekkingLabel.Size = new System.Drawing.Size(70, 15);
+            OpwekkingLabel.TabIndex = 21;
+            OpwekkingLabel.Text = "Opwekking:";
             // 
             // KinderText
             // 
-            this.KinderText.Location = new System.Drawing.Point(218, 160);
-            this.KinderText.Name = "KinderText";
-            this.KinderText.Size = new System.Drawing.Size(403, 31);
-            this.KinderText.TabIndex = 20;
-            this.KinderText.TextChanged += new System.EventHandler(this.KinderText_TextChanged);
+            KinderText.Location = new System.Drawing.Point(127, 100);
+            KinderText.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            KinderText.Name = "KinderText";
+            KinderText.Size = new System.Drawing.Size(237, 23);
+            KinderText.TabIndex = 20;
+            KinderText.TextChanged += KinderText_TextChanged;
             // 
             // OpwekkingText
             // 
-            this.OpwekkingText.Location = new System.Drawing.Point(218, 120);
-            this.OpwekkingText.Name = "OpwekkingText";
-            this.OpwekkingText.Size = new System.Drawing.Size(403, 31);
-            this.OpwekkingText.TabIndex = 19;
-            this.OpwekkingText.TextChanged += new System.EventHandler(this.OpwekkingText_TextChanged);
+            OpwekkingText.Location = new System.Drawing.Point(127, 71);
+            OpwekkingText.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            OpwekkingText.Name = "OpwekkingText";
+            OpwekkingText.Size = new System.Drawing.Size(237, 23);
+            OpwekkingText.TabIndex = 19;
+            OpwekkingText.TextChanged += OpwekkingText_TextChanged;
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(435, 209);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(186, 52);
-            this.cancelButton.TabIndex = 18;
-            this.cancelButton.Text = "Annuleren";
-            this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            cancelButton.Location = new System.Drawing.Point(254, 129);
+            cancelButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            cancelButton.Name = "cancelButton";
+            cancelButton.Size = new System.Drawing.Size(108, 31);
+            cancelButton.TabIndex = 18;
+            cancelButton.Text = "Annuleren";
+            cancelButton.UseVisualStyleBackColor = true;
+            cancelButton.Click += CancelButton_Click;
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(218, 209);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(188, 52);
-            this.saveButton.TabIndex = 17;
-            this.saveButton.Text = "Opslaan";
-            this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            saveButton.Location = new System.Drawing.Point(127, 129);
+            saveButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            saveButton.Name = "saveButton";
+            saveButton.Size = new System.Drawing.Size(110, 31);
+            saveButton.TabIndex = 17;
+            saveButton.Text = "Opslaan";
+            saveButton.UseVisualStyleBackColor = true;
+            saveButton.Click += SaveButton_Click;
             // 
             // MusicSelectInfo
             // 
-            this.MusicSelectInfo.AutoSize = true;
-            this.MusicSelectInfo.Location = new System.Drawing.Point(30, 62);
-            this.MusicSelectInfo.Name = "MusicSelectInfo";
-            this.MusicSelectInfo.Size = new System.Drawing.Size(921, 25);
-            this.MusicSelectInfo.TabIndex = 26;
-            this.MusicSelectInfo.Text = "\"*\" betekent een of meerdere nummers, waarmee het lied geselecteerd word binnen h" +
-    "et bundel.";
+            MusicSelectInfo.AutoSize = true;
+            MusicSelectInfo.Location = new System.Drawing.Point(18, 35);
+            MusicSelectInfo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            MusicSelectInfo.Name = "MusicSelectInfo";
+            MusicSelectInfo.Size = new System.Drawing.Size(512, 15);
+            MusicSelectInfo.TabIndex = 26;
+            MusicSelectInfo.Text = "\"*\" betekent een of meerdere nummers, waarmee het lied geselecteerd word binnen het bundel.";
             // 
             // OpwCaseSensitive
             // 
-            this.OpwCaseSensitive.AutoSize = true;
-            this.OpwCaseSensitive.Location = new System.Drawing.Point(800, 123);
-            this.OpwCaseSensitive.Name = "OpwCaseSensitive";
-            this.OpwCaseSensitive.Size = new System.Drawing.Size(230, 29);
-            this.OpwCaseSensitive.TabIndex = 27;
-            this.OpwCaseSensitive.Text = "Hoofdlettergevoelig";
-            this.OpwCaseSensitive.UseVisualStyleBackColor = true;
-            this.OpwCaseSensitive.CheckedChanged += new System.EventHandler(this.OpwCaseSensitive_CheckedChanged);
+            OpwCaseSensitive.AutoSize = true;
+            OpwCaseSensitive.Location = new System.Drawing.Point(467, 73);
+            OpwCaseSensitive.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            OpwCaseSensitive.Name = "OpwCaseSensitive";
+            OpwCaseSensitive.Size = new System.Drawing.Size(132, 19);
+            OpwCaseSensitive.TabIndex = 27;
+            OpwCaseSensitive.Text = "Hoofdlettergevoelig";
+            OpwCaseSensitive.UseVisualStyleBackColor = true;
+            OpwCaseSensitive.CheckedChanged += OpwCaseSensitive_CheckedChanged;
             // 
             // KopwCaseSensitive
             // 
-            this.KopwCaseSensitive.AutoSize = true;
-            this.KopwCaseSensitive.Location = new System.Drawing.Point(800, 162);
-            this.KopwCaseSensitive.Name = "KopwCaseSensitive";
-            this.KopwCaseSensitive.Size = new System.Drawing.Size(230, 29);
-            this.KopwCaseSensitive.TabIndex = 28;
-            this.KopwCaseSensitive.Text = "Hoofdlettergevoelig";
-            this.KopwCaseSensitive.UseVisualStyleBackColor = true;
-            this.KopwCaseSensitive.CheckedChanged += new System.EventHandler(this.KopwCaseSensitive_CheckedChanged);
+            KopwCaseSensitive.AutoSize = true;
+            KopwCaseSensitive.Location = new System.Drawing.Point(467, 101);
+            KopwCaseSensitive.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            KopwCaseSensitive.Name = "KopwCaseSensitive";
+            KopwCaseSensitive.Size = new System.Drawing.Size(132, 19);
+            KopwCaseSensitive.TabIndex = 28;
+            KopwCaseSensitive.Text = "Hoofdlettergevoelig";
+            KopwCaseSensitive.UseVisualStyleBackColor = true;
+            KopwCaseSensitive.CheckedChanged += KopwCaseSensitive_CheckedChanged;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 87);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(510, 25);
-            this.label1.TabIndex = 29;
-            this.label1.Text = "Het checked het begin van de tekst of het voorkomt.";
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(18, 50);
+            label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(284, 15);
+            label1.TabIndex = 29;
+            label1.Text = "Het checked het begin van de tekst of het voorkomt.";
             // 
             // EditSearchForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1046, 273);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.KopwCaseSensitive);
-            this.Controls.Add(this.OpwCaseSensitive);
-            this.Controls.Add(this.MusicSelectInfo);
-            this.Controls.Add(this.KinderCheckBox);
-            this.Controls.Add(this.OpwekkingCheckBox);
-            this.Controls.Add(this.OpwekkingQueryLabel);
-            this.Controls.Add(this.KinderOpwekkingLabel);
-            this.Controls.Add(this.OpwekkingLabel);
-            this.Controls.Add(this.KinderText);
-            this.Controls.Add(this.OpwekkingText);
-            this.Controls.Add(this.cancelButton);
-            this.Controls.Add(this.saveButton);
-            this.Name = "EditSearchForm";
-            this.Text = "Liedherkenning bewerken";
-            this.Load += new System.EventHandler(this.EditSongSearch_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(610, 173);
+            Controls.Add(label1);
+            Controls.Add(KopwCaseSensitive);
+            Controls.Add(OpwCaseSensitive);
+            Controls.Add(MusicSelectInfo);
+            Controls.Add(KinderCheckBox);
+            Controls.Add(OpwekkingCheckBox);
+            Controls.Add(OpwekkingQueryLabel);
+            Controls.Add(KinderOpwekkingLabel);
+            Controls.Add(OpwekkingLabel);
+            Controls.Add(KinderText);
+            Controls.Add(OpwekkingText);
+            Controls.Add(cancelButton);
+            Controls.Add(saveButton);
+            Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            Name = "EditSearchForm";
+            Text = "Liedherkenning bewerken";
+            Load += EditSongSearch_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

@@ -58,7 +58,8 @@ namespace PlanningCenter_to_OPS
             {
                 DialogResult dialogResult = MessageBox.Show("Gebruik minimaal 1 \"*\" in zowel opwekking als kinderliederen", "Liedherkenning bewerken", MessageBoxButtons.OK);
                 if (dialogResult == DialogResult.OK) { }
-            } else
+            }
+            else
             {
                 config.opw_selector = opw_selector;
                 config.kopw_selector = kopw_selector;

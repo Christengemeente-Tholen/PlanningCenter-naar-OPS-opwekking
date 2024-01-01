@@ -109,7 +109,8 @@ namespace PlanningCenter_to_OPS
             try
             {
                 Process.Start(new ProcessStartInfo() { FileName = "C:\\ProgramData\\Stichting Opwekking\\OPS 8\\opsSkipList.txt", UseShellExecute = true });
-            } catch (Win32Exception winE)
+            }
+            catch (Win32Exception winE)
             {
                 MessageBox.Show(winE.Message);
             }
@@ -129,5 +130,11 @@ namespace PlanningCenter_to_OPS
             ReadOpsDb db_reader = new ReadOpsDb();
             db_reader.Export();
         }
+
+        private void ReadSongs_Click(object sender, EventArgs e)
+        {
+            SonglistToExcel.GetSongs();
+        }
     }
+
 }
