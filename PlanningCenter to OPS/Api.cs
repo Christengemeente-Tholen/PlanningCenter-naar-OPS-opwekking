@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Text;
 using Newtonsoft.Json;
@@ -21,7 +22,6 @@ namespace PlanningCenter_to_OPS
         public static Structs.ServicesOrg GetOrg(Config config)
         {
             string responseContent = GetRequest(config, "https://api.planningcenteronline.com/services/v2");
-            Console.WriteLine(responseContent);
             if (responseContent != null)
                 return JsonConvert.DeserializeObject<Structs.ServicesOrg>(responseContent);
             return null;
@@ -36,7 +36,7 @@ namespace PlanningCenter_to_OPS
         public static Structs.ServicePlans GetServicePlans(Config config, string service_type, string filter_date = "future") // no_dates | future
         {
             string url = String.Format(
-                "https://api.planningcenteronline.com/services/v2/service_types/{0}/plans?order=sort_date&filter={1}&include=plan_times",
+                "https://api.planningcenteronline.com/services/v2/service_types/{0}/plans?filter={1}&include=plan_times",
                 service_type,
                 filter_date
             );

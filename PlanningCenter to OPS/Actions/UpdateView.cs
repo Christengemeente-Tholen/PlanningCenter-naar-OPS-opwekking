@@ -1,4 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using DocumentFormat.OpenXml.Spreadsheet;
+using PlanningCenter_to_OPS.Structs;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using System.Net;
 using System.Windows.Forms;
 
@@ -7,9 +12,9 @@ namespace PlanningCenter_to_OPS.Actions
 
     internal class UpdateView
     {
-        internal static Dictionary<string, string> UpdateServiceType(Config config, ComboBox.ObjectCollection items)
+        internal static Dictionary<string, string> UpdateServiceType(Config config, ComboBox combo_box, ComboBox plans_selector)
         {
-            items.Clear();
+            combo_box.Items.Clear();
             try
             {
                 Structs.ServiceType ServiceTypeDict = Api.GetServiceType(config);
@@ -19,18 +24,24 @@ namespace PlanningCenter_to_OPS.Actions
                     string currrent_service = x.attributes.name;
                     int i = 1;
 
-                    if (items.Contains(currrent_service))
+                    if (combo_box.Items.Contains(currrent_service))
                     {
-                        while (items.Contains(currrent_service + " " + i))
+                        while (combo_box.Items.Contains(currrent_service + " " + i))
                         {
                             i++;
                         }
-                        items.Add(currrent_service + " " + i);
+                        combo_box.Items.Add(currrent_service + " " + i);
                         ServiceTypes.Add(currrent_service + " " + i, x.id);
                     }
-                    items.Add(currrent_service);
+                    combo_box.Items.Add(currrent_service);
                     ServiceTypes.Add(currrent_service, x.id);
                 });
+                // Only update when nothing was selected before
+                if (combo_box.SelectedIndex == -1 && combo_box.Items.Count > 0)
+                {
+                    combo_box.SelectedIndex = 0;
+                    UpdatePlans(config, plans_selector, ServiceTypes[combo_box.SelectedItem.ToString()]);
+                }
 
                 return ServiceTypes;
             }
@@ -43,10 +54,11 @@ namespace PlanningCenter_to_OPS.Actions
 
         internal static List<string> filter_date_types = new List<string>() {"future", "no_dates"};
 
-        internal static Dictionary<string, string> UpdatePlans(Config config, ComboBox.ObjectCollection items, string selected_service_type)
+        internal static Dictionary<string, string> UpdatePlans(Config config, ComboBox combo_box, string selected_service_type)
         {
             Dictionary<string, string> ServiceTypes = new Dictionary<string, string>();
-            items.Clear();
+            List<Tuple<DateTime, string>> to_add = new List<Tuple<DateTime, string>>();
+            combo_box.Items.Clear();
             try
             {
                 UpdateView.filter_date_types.ForEach(date_type =>
@@ -65,21 +77,27 @@ namespace PlanningCenter_to_OPS.Actions
                         }
                         int i = 1;
 
-                        if (items.Contains(current_plan))
+                        if (combo_box.Items.Contains(current_plan))
                         {
-                            while (items.Contains(current_plan + " " + i))
+                            while (combo_box.Items.Contains(current_plan + " " + i))
                             {
                                 i++;
                             }
-                            items.Add(current_plan + " " + i);
+                            combo_box.Items.Add(current_plan + " " + i);
                             ServiceTypes.Add(current_plan + " " + i, x.links.self);
                         } else
                         {
-                            items.Add(current_plan);
+                            combo_box.Items.Add(current_plan);
                             ServiceTypes.Add(current_plan, x.links.self);
                         }
                     });
                 });
+
+                // Only update when nothing was selected before
+                if (combo_box.SelectedIndex == -1 && combo_box.Items.Count > 0)
+                {
+                    combo_box.SelectedIndex = 0;
+                }
 
                 return ServiceTypes;
             }

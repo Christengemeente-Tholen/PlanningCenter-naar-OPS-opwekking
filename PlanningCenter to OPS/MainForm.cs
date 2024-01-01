@@ -5,6 +5,7 @@ using System.Net;
 using System.Windows.Forms;
 using System.ComponentModel;
 using PlanningCenter_to_OPS.Actions;
+using PlanningCenter_to_OPS.Structs;
 
 namespace PlanningCenter_to_OPS
 {
@@ -33,13 +34,11 @@ namespace PlanningCenter_to_OPS
             try
             {
                 OrganisationName.Text = "Gekoppeld aan: " + Api.GetOrg(config).data.attributes.name;
-                ServiceTypesInfo = UpdateView.UpdateServiceType(config, ServiceTypeSelector.Items);
-                Console.WriteLine(ServiceTypesInfo);
+                ServiceTypesInfo = UpdateView.UpdateServiceType(config, ServiceTypeSelector, PlanSelector);
             }
             catch (NotImplementedException e)
             {
                 ServiceTypeSelector.Items.Clear();
-                Console.WriteLine(e.Message);
                 OrganisationName.Text = "Gekoppeld aan: " + "niet gekoppeld / " + e.Message;
             }
         }
@@ -68,9 +67,10 @@ namespace PlanningCenter_to_OPS
         {
             ComboBox cmb = (ComboBox)sender;
             string current = (string)cmb.SelectedItem;
+            if (current == null) return;
             if (ServiceTypesInfo.ContainsKey(current))
             {
-                PlansInfo = UpdateView.UpdatePlans(config, PlanSelector.Items, ServiceTypesInfo[current]);
+                PlansInfo = UpdateView.UpdatePlans(config, PlanSelector, ServiceTypesInfo[current]);
             }
         }
 
@@ -78,6 +78,7 @@ namespace PlanningCenter_to_OPS
         {
             ComboBox cmb = (ComboBox)sender;
             string current = (string)cmb.SelectedItem;
+            if (current == null) return;
             if (PlansInfo.ContainsKey(current))
             {
                 this.current_plan = current;
@@ -92,8 +93,11 @@ namespace PlanningCenter_to_OPS
                 try
                 {
                     Structs.SongList song_return = Api.GetSongList(config, PlansInfo[current_plan]);
-                    ToXml.CreateXml(config, song_return, current_plan);
-                } catch (WebException ex)
+                    //ToXml.CreateXml(config, song_return, current_plan);
+                    SelectSongs selectSongs = new SelectSongs(this.config, song_return);
+                    selectSongs.ShowDialog();
+                }
+                catch (WebException ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
@@ -118,6 +122,12 @@ namespace PlanningCenter_to_OPS
                 DialogResult result = edit_search.ShowDialog();
                 this.RefreshItems();
             }
+        }
+
+        private void ReadSongs_Click(object sender, EventArgs e)
+        {
+            ReadOpsDb db_reader = new ReadOpsDb();
+            db_reader.Export();
         }
     }
 }
