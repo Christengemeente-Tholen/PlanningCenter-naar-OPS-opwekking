@@ -10,8 +10,6 @@
         }
         public override string SongBookName => this.override_name;
 
-        public override string StyleName => "OPS";
-
         public override string SelectedVersion => "MyVersion";
     }
 }

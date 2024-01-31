@@ -3,7 +3,6 @@
     internal abstract class BookType
     {
         public abstract string SongBookName { get; }
-        public abstract string StyleName { get; }
         public abstract string SelectedVersion { get; }
 
     }

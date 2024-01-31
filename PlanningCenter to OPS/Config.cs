@@ -14,6 +14,7 @@
         public string et_abbreviation;
         public string et_bundle_name;
         public bool et_enabled;
+        public string last_used_ops_theme;
 
         public Config()
         {
@@ -29,6 +30,7 @@
             et_abbreviation = Properties.Settings.Default.et_abbreviation;
             et_bundle_name = Properties.Settings.Default.et_bundle_name;
             et_enabled = Properties.Settings.Default.et_enabled;
+            last_used_ops_theme = Properties.Settings.Default.last_used_ops_theme;
         }
 
         public void Update()
@@ -45,6 +47,7 @@
             Properties.Settings.Default.et_abbreviation = et_abbreviation;
             Properties.Settings.Default.et_bundle_name = et_bundle_name;
             Properties.Settings.Default.et_enabled = et_enabled;
+            Properties.Settings.Default.last_used_ops_theme = last_used_ops_theme;
             Properties.Settings.Default.Save();
         }
     }

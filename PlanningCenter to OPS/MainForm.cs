@@ -50,6 +50,14 @@ namespace PlanningCenter_to_OPS
             {
                 OpsThemeSelector.Items.Add(node.InnerText);
             }
+            Debug.WriteLine(config.last_used_ops_theme);
+            if (config.last_used_ops_theme != "")
+            {
+                OpsThemeSelector.SelectedItem = config.last_used_ops_theme;
+            } else
+            {
+                OpsThemeSelector.SelectedIndex = 0;
+            }
         }
 
         private void CheckPlan()
@@ -101,12 +109,13 @@ namespace PlanningCenter_to_OPS
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            config.Update();
             if (current_plan != null)
             {
                 try
                 {
                     Structs.SongList song_return = Api.GetSongList(config, PlansInfo[current_plan]);
-                    using (SelectSongs select_songs = new SelectSongs(this.config, song_return))
+                    using (SelectSongs select_songs = new SelectSongs(config, song_return))
                     {
                         DialogResult result = select_songs.ShowDialog();
                     }
@@ -147,7 +156,10 @@ namespace PlanningCenter_to_OPS
 
         private void OpsThemeSelector_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            ComboBox cmb = (ComboBox)sender;
+            string current = (string)cmb.SelectedItem;
+            if (current == null) return;
+            config.last_used_ops_theme = current;
         }
     }
 

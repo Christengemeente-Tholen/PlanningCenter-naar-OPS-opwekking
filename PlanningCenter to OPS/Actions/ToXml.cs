@@ -20,7 +20,7 @@ namespace PlanningCenter_to_OPS.Actions
                 new XElement("Number", song_number),
                 new XElement("SongBookName", book.SongBookName),
                 new XElement("Keys"),
-                new XElement("StyleName", book.StyleName),
+                new XElement("StyleName", config.last_used_ops_theme),
                 new XElement("Title", song_name),
                 new XElement("SelectedVersion", book.SelectedVersion),
                 new XElement("Language", "All"),
@@ -33,13 +33,13 @@ namespace PlanningCenter_to_OPS.Actions
 
         }
 
-        internal static XElement SongFileNode(string song_name, string save_location)
+        internal static XElement SongFileNode(Config config, string song_name)
         {
             XElement doc = new XElement("SongFromFile",
                 new XElement("Comment"),
                 new XElement("DisplayTitle", song_name),
-                new XElement("FileName", String.Format("{0}\\{1}.txt", save_location, song_name)),
-                new XElement("StyleName", "OPS")
+                new XElement("FileName", String.Format("{0}\\{1}.txt", config.song_folder, song_name)),
+                new XElement("StyleName", config.last_used_ops_theme)
             );
             doc.SetAttributeValue("ID", Guid.NewGuid().ToString());
             doc.SetAttributeValue("Type", "Song");
@@ -72,7 +72,7 @@ namespace PlanningCenter_to_OPS.Actions
                 } else if (current.Type == "file")
                 {
                     LyricsToFile.ToFile(config, current.Detailed);
-                    xml_list.Add(SongFileNode(title, config.song_folder));
+                    xml_list.Add(SongFileNode(config, title));
                 } else
                 {
                     xml_list.Add(SongNode(config, title, config.et_abbreviation, current.Id.ToString()));
