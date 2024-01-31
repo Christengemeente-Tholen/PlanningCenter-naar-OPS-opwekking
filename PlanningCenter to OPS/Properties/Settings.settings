@@ -38,5 +38,8 @@
     <Setting Name="et_bundle_name" Type="System.String" Scope="User">
       <Value Profile="(Default)">Eigen teksten</Value>
     </Setting>
+    <Setting Name="last_used_ops_theme" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

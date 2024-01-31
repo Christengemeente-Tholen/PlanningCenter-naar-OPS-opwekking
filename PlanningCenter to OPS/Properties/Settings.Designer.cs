@@ -166,5 +166,17 @@ namespace PlanningCenter_to_OPS.Properties {
                 this["et_bundle_name"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string last_used_ops_theme {
+            get {
+                return ((string)(this["last_used_ops_theme"]));
+            }
+            set {
+                this["last_used_ops_theme"] = value;
+            }
+        }
     }
 }

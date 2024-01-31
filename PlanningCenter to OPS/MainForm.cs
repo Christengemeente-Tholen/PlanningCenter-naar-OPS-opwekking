@@ -5,6 +5,7 @@ using System.Net;
 using System.Windows.Forms;
 using System.ComponentModel;
 using PlanningCenter_to_OPS.Actions;
+using System.Xml;
 
 namespace PlanningCenter_to_OPS
 {
@@ -40,6 +41,14 @@ namespace PlanningCenter_to_OPS
             {
                 ServiceTypeSelector.Items.Clear();
                 OrganisationName.Text = "Gekoppeld aan: " + "niet gekoppeld / " + e.Message;
+            }
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load("C:\\ProgramData\\Stichting Opwekking\\OPS 8\\Themes.xml");
+            OpsThemeSelector.Items.Clear();
+            foreach (XmlNode node in doc.GetElementsByTagName("ThemeName"))
+            {
+                OpsThemeSelector.Items.Add(node.InnerText);
             }
         }
 
@@ -134,6 +143,11 @@ namespace PlanningCenter_to_OPS
         {
             ReadOpsDb db_reader = new ReadOpsDb();
             db_reader.Export();
+        }
+
+        private void OpsThemeSelector_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 

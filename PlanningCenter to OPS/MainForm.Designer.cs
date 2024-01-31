@@ -41,6 +41,8 @@
             EditOpsSkipList = new System.Windows.Forms.Button();
             button1 = new System.Windows.Forms.Button();
             ReadSongs = new System.Windows.Forms.Button();
+            OpsThemeSelector = new System.Windows.Forms.ComboBox();
+            OPSThemeLabel = new System.Windows.Forms.Label();
             SuspendLayout();
             // 
             // EditLogin
@@ -110,7 +112,7 @@
             // 
             // SaveButton
             // 
-            SaveButton.Location = new System.Drawing.Point(19, 156);
+            SaveButton.Location = new System.Drawing.Point(19, 182);
             SaveButton.Margin = new System.Windows.Forms.Padding(2);
             SaveButton.Name = "SaveButton";
             SaveButton.Size = new System.Drawing.Size(367, 25);
@@ -142,7 +144,7 @@
             // 
             // EditOpsSkipList
             // 
-            EditOpsSkipList.Location = new System.Drawing.Point(125, 126);
+            EditOpsSkipList.Location = new System.Drawing.Point(125, 152);
             EditOpsSkipList.Margin = new System.Windows.Forms.Padding(2);
             EditOpsSkipList.Name = "EditOpsSkipList";
             EditOpsSkipList.Size = new System.Drawing.Size(135, 25);
@@ -153,7 +155,7 @@
             // 
             // button1
             // 
-            button1.Location = new System.Drawing.Point(19, 126);
+            button1.Location = new System.Drawing.Point(19, 152);
             button1.Margin = new System.Windows.Forms.Padding(2);
             button1.Name = "button1";
             button1.Size = new System.Drawing.Size(102, 25);
@@ -164,7 +166,7 @@
             // 
             // ReadSongs
             // 
-            ReadSongs.Location = new System.Drawing.Point(264, 126);
+            ReadSongs.Location = new System.Drawing.Point(264, 152);
             ReadSongs.Margin = new System.Windows.Forms.Padding(2);
             ReadSongs.Name = "ReadSongs";
             ReadSongs.Size = new System.Drawing.Size(122, 25);
@@ -173,11 +175,35 @@
             ReadSongs.UseVisualStyleBackColor = true;
             ReadSongs.Click += ReadSongs_Click;
             // 
+            // OpsThemeSelector
+            // 
+            OpsThemeSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            OpsThemeSelector.FormattingEnabled = true;
+            OpsThemeSelector.Location = new System.Drawing.Point(101, 125);
+            OpsThemeSelector.Margin = new System.Windows.Forms.Padding(2);
+            OpsThemeSelector.Name = "OpsThemeSelector";
+            OpsThemeSelector.Size = new System.Drawing.Size(285, 23);
+            OpsThemeSelector.Sorted = true;
+            OpsThemeSelector.TabIndex = 12;
+            OpsThemeSelector.SelectedIndexChanged += OpsThemeSelector_SelectedIndexChanged;
+            // 
+            // OPSThemeLabel
+            // 
+            OPSThemeLabel.AutoSize = true;
+            OPSThemeLabel.Location = new System.Drawing.Point(19, 129);
+            OPSThemeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            OPSThemeLabel.Name = "OPSThemeLabel";
+            OPSThemeLabel.Size = new System.Drawing.Size(71, 15);
+            OPSThemeLabel.TabIndex = 13;
+            OPSThemeLabel.Text = "OPS Thema:";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            ClientSize = new System.Drawing.Size(404, 194);
+            ClientSize = new System.Drawing.Size(404, 224);
+            Controls.Add(OPSThemeLabel);
+            Controls.Add(OpsThemeSelector);
             Controls.Add(ReadSongs);
             Controls.Add(button1);
             Controls.Add(EditOpsSkipList);
@@ -214,6 +240,8 @@
         private System.Windows.Forms.Button EditOpsSkipList;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button ReadSongs;
+        private System.Windows.Forms.ComboBox OpsThemeSelector;
+        private System.Windows.Forms.Label OPSThemeLabel;
     }
 }
 
