@@ -50,7 +50,6 @@ namespace PlanningCenter_to_OPS
             {
                 OpsThemeSelector.Items.Add(node.InnerText);
             }
-            Debug.WriteLine(config.last_used_ops_theme);
             if (config.last_used_ops_theme != "")
             {
                 OpsThemeSelector.SelectedItem = config.last_used_ops_theme;
