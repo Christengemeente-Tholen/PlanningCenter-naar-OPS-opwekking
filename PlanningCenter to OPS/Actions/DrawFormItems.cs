@@ -1,5 +1,7 @@
-﻿using System;
+﻿using PlanningCenter_to_OPS.Structs;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -48,7 +50,8 @@ namespace PlanningCenter_to_OPS.Actions
             {
                 ComboBox.Items.Add($"{this.Type} {this.SongId}");
             }
-            foreach (var song in OwnSongs.Where(song => SongInfo.attributes.title.ToLower().Contains(song.name)))
+            string song_lowercase_title = SongInfo.attributes.title.ToLower();
+            foreach (var song in OwnSongs.Where(song => song_lowercase_title.Contains(song.name) || song.name.Contains(song_lowercase_title)))
             {
                 ComboBox.Items.Add($"et {song.id} - {song.name}");
                 FoundSongs.Add($"et {song.id} - {song.name}", song);
