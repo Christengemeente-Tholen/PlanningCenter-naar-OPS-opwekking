@@ -20,7 +20,7 @@ namespace PlanningCenter_to_OPS
             this.SongList = song_list;
 
             this.AutoScroll = true;
-            //MainPanel.AutoScroll = true;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
         private void SelectSongs_Load(object sender, EventArgs e)
@@ -59,15 +59,15 @@ namespace PlanningCenter_to_OPS
                             .Match(x.attributes.title);
                     if (isOpw.Value.Length > 0 && this.Config.opw_selector_enabled && opw_songs.Contains(isOpw.Groups[1].Value.TrimStart('0')))
                     {
-                        song_element = new DrawFormItems(x, "opw", isOpw.Groups[1].Value.TrimStart('0'));
+                        song_element = new DrawFormItems(this.Config, x, "opw", isOpw.Groups[1].Value.TrimStart('0'));
                     }
                     else if (isKopw.Value.Length > 0 && this.Config.kopw_selector_enabled && kopw_songs.Contains(isKopw.Groups[1].Value.TrimStart('0')))
                     {
-                        song_element = new DrawFormItems(x, "kopw", isKopw.Groups[1].Value.TrimStart('0'));
+                        song_element = new DrawFormItems(this.Config, x, "kopw", isKopw.Groups[1].Value.TrimStart('0'));
                     }
                     else
                     {
-                        song_element = new DrawFormItems(x, "", "");
+                        song_element = new DrawFormItems(this.Config, x, "", "");
                     }
                     song_element.Render(this);
                     this.SongDropdowns.Add(song_element);

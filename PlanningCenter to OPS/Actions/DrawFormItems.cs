@@ -1,7 +1,5 @@
-﻿using PlanningCenter_to_OPS.Structs;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -26,15 +24,18 @@ namespace PlanningCenter_to_OPS.Actions
         private Structs.SongListData SongInfo { get; set; }
         private string Type { get; set; }
         private string SongId { get; set; }
+        private Config Config { get; set; }
         private Dictionary<string, Structs.Song> FoundSongs = new Dictionary<string, Structs.Song>();
         private ComboBox ComboBox = new ComboBox();
+        private Button CopyButton = new Button();
 
 
         public static int StartX { get; set; } = 20;
         public static int StartY { get; set; } = 40;
         public static List<Structs.Song> OwnSongs;
-        public DrawFormItems(Structs.SongListData song_info, string type, string song_id)
+        public DrawFormItems(Config config, Structs.SongListData song_info, string type, string song_id)
         {
+            this.Config = config;
             this.SongInfo = song_info;
             this.Type = type;
             this.SongId = song_id;
@@ -67,10 +68,18 @@ namespace PlanningCenter_to_OPS.Actions
             StartX += 150; // Move position to right
             ComboBox.Left = StartX;
             ComboBox.Top = StartY - 4;
+
+            CopyButton.Text = "Kopieer lyrics";
+            CopyButton.Left = StartX + 252;
+            CopyButton.Top = StartY - 4;
+            CopyButton.Click += CopyButton_Click;
+            CopyButton.Width = 90;
+
             StartX = 20; // Reset to start
             StartY += 30; // Move position to down
             f.Controls.Add(label);
             f.Controls.Add(ComboBox);
+            f.Controls.Add(CopyButton);
         }
 
         internal static void RenderTitle(Form f, string text)
@@ -83,6 +92,13 @@ namespace PlanningCenter_to_OPS.Actions
             label.ForeColor = System.Drawing.Color.Gray;
             StartY += 30;
             f.Controls.Add(label);
+        }
+
+        private void CopyButton_Click(object sender, EventArgs e)
+        {
+            Structs.Lyrics lyrics = Api.GetLyrics(this.Config, this.SongInfo.links.self);
+            string cleaned_lyrics = LyricsToFile.Lyrics(lyrics.data.attributes.lyrics);
+            Clipboard.SetText(cleaned_lyrics);
         }
 
         public SongInfo GetSelectedSong()

@@ -73,51 +73,60 @@ namespace PlanningCenter_to_OPS.Actions
             return s;
         }
 
+        internal static string Lyrics(string lyrics)
+        {
+
+            string[] current_lyrics = lyrics.Split(
+                new string[] { "\r\n", "\r", "\n" },
+                StringSplitOptions.None
+            );
+            string cleaned_lyrics = "";
+
+            foreach (string line in current_lyrics)
+            {
+                // if value not in RemovedText
+                if (!removed_text.Any(s => line.ToLower().Contains(s.ToLower())))
+                {
+                    // replace chorus with ops eqivelant
+                    Dictionary<string, string> translate_to_ops = new Dictionary<string, string>() {
+                    { "chorus", "Chorus:" },
+                    { "chorus 1", "Chorus 1:"},
+                    { "chorus 2", "Chorus 2:"},
+                    { "chorus 3", "Chorus 3:"},
+                    { "bridge", "Bridge:" },
+                    { "bridge 2x", "Bridge 2x:" },
+                    { "refrein", "Refrein:" },
+                    { "refrein 1", "Refrein 1:"},
+                    { "refrein 2", "Refrein 2:"},
+                    { "refrein 3", "Refrein 3:"},
+                };
+
+                    string translated_ops;
+                    if (translate_to_ops.TryGetValue(line.ToLower().Replace(":", ""), out translated_ops))
+                    {
+                        cleaned_lyrics += translated_ops + "\r\n";
+                    }
+                    else
+                    {
+                        byte[] bytes = Encoding.ASCII.GetBytes(ReplaceWordChars(line));
+                        char[] chars = Encoding.ASCII.GetChars(bytes);
+                        string result = new(chars);
+                        result = result.Replace("?", "");
+                        cleaned_lyrics += result + "\r\n";
+                    }
+                }
+            }
+
+            return cleaned_lyrics;
+        }
+
         internal static void ToFile(Config config, Structs.SongListData song)
         {
+
             Structs.Lyrics lyrics_return = Api.GetLyrics(config, song.links.self);
             if (lyrics_return.data.attributes.lyrics != null)
             {
-                string[] current_lyrics = lyrics_return.data.attributes.lyrics.Split(
-                    new string[] { "\r\n", "\r", "\n" },
-                    StringSplitOptions.None
-                );
-                string cleaned_lyrics = "";
-
-                foreach (string line in current_lyrics)
-                {
-                    // if value not in RemovedText
-                    if (!removed_text.Any(s => line.ToLower().Contains(s.ToLower())))
-                    {
-                        // replace chorus with ops eqivelant
-                        Dictionary<string, string> translate_to_ops = new Dictionary<string, string>() {
-                            { "chorus", "Chorus:" },
-                            { "chorus 1", "Chorus 1:"},
-                            { "chorus 2", "Chorus 2:"},
-                            { "chorus 3", "Chorus 3:"},
-                            { "bridge", "Bridge:" },
-                            { "bridge 2x", "Bridge 2x:" },
-                            { "refrein", "Refrein:" },
-                            { "refrein 1", "Refrein 1:"},
-                            { "refrein 2", "Refrein 2:"},
-                            { "refrein 3", "Refrein 3:"},
-                        };
-
-                        string translated_ops;
-                        if (translate_to_ops.TryGetValue(line.ToLower().Replace(":", ""), out translated_ops))
-                        {
-                            cleaned_lyrics += translated_ops + "\r\n";
-                        } else
-                        {
-                            byte[] bytes = Encoding.ASCII.GetBytes(ReplaceWordChars(line));
-                            char[] chars = Encoding.ASCII.GetChars(bytes);
-                            string result = new (chars);
-                            result = result.Replace("?", "");
-                            cleaned_lyrics += result + "\r\n";
-                        }
-                    }
-                }
-
+                string cleaned_lyrics = Lyrics(lyrics_return.data.attributes.lyrics);
                 try
                 {
                     File.WriteAllText(Path.Combine(config.song_folder, String.Format("{0}.txt", song.attributes.title)), cleaned_lyrics);
