@@ -83,7 +83,7 @@ namespace PlanningCenter_to_OPS
             ContinueButton.Text = "Doorgaan";
             ContinueButton.Left = DrawFormItems.StartX;
             ContinueButton.Top = DrawFormItems.StartY - 5;
-            ContinueButton.Width = 400;
+            ContinueButton.Width = 492;
             ContinueButton.Height = 25;
             ContinueButton.Click += ContinueButton_Click;
             this.Controls.Add(ContinueButton);
