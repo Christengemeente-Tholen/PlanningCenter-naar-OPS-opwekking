@@ -83,7 +83,7 @@ namespace PlanningCenter_to_OPS.Actions
             ToolTip.Hide(ComboBox);
         }
 
-        public void Render(Form f)
+        public void Render(Form f, Config config)
         {
             Label.Text = SongInfo.attributes.title;
             Label.TooltipText = "test";
@@ -100,7 +100,7 @@ namespace PlanningCenter_to_OPS.Actions
             {
                 ComboBox.Items.Add($"et {song.id} - {song.name}");
                 FoundSongs.Add($"et {song.id} - {song.name}", song);
-                SongTooltipInfo.Add($"et {song.id} - {song.name}", $"et{song.id}");
+                SongTooltipInfo.Add($"et {song.id} - {song.name}", $"{config.et_abbreviation}{song.id}");
             };
             ComboBox.Items.Add("Planning center");
             ComboBox.SelectedIndex = 0;

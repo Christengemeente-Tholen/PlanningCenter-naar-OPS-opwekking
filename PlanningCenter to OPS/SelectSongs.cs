@@ -69,7 +69,7 @@ namespace PlanningCenter_to_OPS
                     {
                         song_element = new DrawFormItems(this.Config, x, "", "");
                     }
-                    song_element.Render(this);
+                    song_element.Render(this, this.Config);
                     this.SongDropdowns.Add(song_element);
                 } else
                 {

@@ -14,18 +14,20 @@ namespace PlanningCenter_to_OPS.Actions
         private static string SqlConnectionString = "Data Source=C:\\ProgramData\\Stichting Opwekking\\OPS 8\\songs.search.sqlite";
         //private static string SqlConnectionString = "Data Source=C:\\Users\\zjobse\\Downloads\\songs.search.sqlite";
 
-        public ReadOpsDb()
+        public ReadOpsDb(bool add_first_line = false)
         {
             using (var connection = new SqliteConnection(SqlConnectionString))
             {
                 connection.Open();
 
                 var command = connection.CreateCommand();
-                command.CommandText =
-                @"
-                    SELECT title
-                    FROM song_index
-                ";
+                if (add_first_line)
+                {
+                    command.CommandText = @"SELECT title, first_line FROM song_index";
+                } else
+                {
+                    command.CommandText = @"SELECT title FROM song_index";
+                }
                 IDictionary<string, List<Song>> song_lists = new Dictionary<string, List<Song>>();
                 using (var reader = command.ExecuteReader())
                 {
@@ -42,7 +44,15 @@ namespace PlanningCenter_to_OPS.Actions
                             song_lists.Add(last_item, new List<Structs.Song>());
                         }
                         string song_name = string.Join(" ", unparsed_current_song.Skip(1).ToArray().SkipLast(last_item.Length));
-                        song_lists[last_item].Add(new Structs.Song(song_number, song_name));
+
+                        if (add_first_line) {
+                            string[] unparsed_first_line = reader.GetString(1).Split(' ');
+                            string first_line = string.Join(" ", unparsed_first_line.Skip(1).ToArray().SkipLast(last_item.Length));
+                            song_lists[last_item].Add(new Structs.Song(song_number, song_name, first_line));
+                        } else
+                        {
+                            song_lists[last_item].Add(new Structs.Song(song_number, song_name, ""));
+                        }
                     }
                 }
                 this.books = song_lists;
@@ -84,10 +94,12 @@ namespace PlanningCenter_to_OPS.Actions
                     IXLWorksheet worksheet = workbook.Worksheets.Add(entry.Key);
                     worksheet.Cell(1, 1).Value = "Liednummer";
                     worksheet.Cell(1, 2).Value = "Titel";
+                    worksheet.Cell(1, 3).Value = "Eerste regel";
                     for (int i = 1; i < entry.Value.Count; i++)
                     {
                         worksheet.Cell(i + 1, 1).Value = entry.Value[i].id;
                         worksheet.Cell(i + 1, 2).Value = entry.Value[i].name;
+                        worksheet.Cell(i + 1, 3).Value = entry.Value[i].first_line;
                     }
                 }
 

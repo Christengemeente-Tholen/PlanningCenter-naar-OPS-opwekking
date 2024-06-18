@@ -149,7 +149,7 @@ namespace PlanningCenter_to_OPS
 
         private void ReadSongs_Click(object sender, EventArgs e)
         {
-            ReadOpsDb db_reader = new ReadOpsDb();
+            ReadOpsDb db_reader = new ReadOpsDb(true);
             db_reader.Export();
         }
 
