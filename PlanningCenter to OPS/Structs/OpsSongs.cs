@@ -6,11 +6,13 @@ namespace PlanningCenter_to_OPS.Structs
     {
         public int id { get; set; }
         public string name { get; set; }
+        public string first_line { get; set; }
 
-        public Song (int id, string name)
+        public Song (int id, string name, string first_line)
         {
             this.id = id;
             this.name = name;
+            this.first_line = first_line;
         }
     }
 

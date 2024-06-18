@@ -13,7 +13,7 @@ namespace PlanningCenter_to_OPS.Actions
         public IDictionary<string, List<Song>> books;
         public ReadOpsDb()
         {
-            // using (var connection = new SqliteConnection("Data Source=E:\\code\\C#\\PlanningCenter-naar-OPS-opwekking-\\songs.search.sqlite"))
+             //using (var connection = new SqliteConnection("Data Source=C:\\Users\\zjobse\\Downloads\\songs.search.sqlite"))
             using (var connection = new SqliteConnection("Data Source=C:\\ProgramData\\Stichting Opwekking\\OPS 8\\songs.search.sqlite"))
             {
                 connection.Open();
@@ -21,7 +21,7 @@ namespace PlanningCenter_to_OPS.Actions
                 var command = connection.CreateCommand();
                 command.CommandText =
                 @"
-                    SELECT title
+                    SELECT title, first_line
                     FROM song_index
                 ";
                 IDictionary<string, List<Song>> song_lists = new Dictionary<string, List<Song>>();
@@ -29,15 +29,20 @@ namespace PlanningCenter_to_OPS.Actions
                 {
                     while (reader.Read())
                     {
-                        string[] current_song = reader.GetString(0).Split(' ');
-                        _ = int.TryParse(string.Concat(current_song[0].Where(char.IsNumber)), out int song_number);
+                        string[] unparsed_current_song = reader.GetString(0).Split(' ');
+                        if(!int.TryParse(string.Concat(unparsed_current_song[0].Where(char.IsNumber)), out int song_number)) {
+                            continue;
+                        }
+                        string[] unparsed_first_line = reader.GetString(1).Split(" ");
 
-                        string last_item = string.Concat(current_song.Last().Where(char.IsLetter));
+                        string last_item = string.Concat(unparsed_current_song.Last().Where(char.IsLetter));
                         if (!song_lists.TryGetValue(last_item, out _))
                         {
                             song_lists.Add(last_item, new List<Structs.Song>());
                         }
-                        song_lists[last_item].Add(new Structs.Song(song_number, string.Join(" ", current_song.Skip(1).ToArray().SkipLast(last_item.Length))));
+                        string song_name = string.Join(" ", unparsed_current_song.Skip(1).ToArray().SkipLast(last_item.Length));
+                        string first_line = string.Join(" ", unparsed_first_line.Skip(1).ToArray().SkipLast(last_item.Length));
+                        song_lists[last_item].Add(new Structs.Song(song_number, song_name, first_line));
                     }
                 }
                 this.books = song_lists;
