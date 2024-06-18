@@ -11,8 +11,8 @@ namespace PlanningCenter_to_OPS.Actions
     internal class ReadOpsDb
     {
         public IDictionary<string, List<Song>> books;
-        //private static string SqlConnectionString = "Data Source=C:\\ProgramData\\Stichting Opwekking\\OPS 8\\songs.search.sqlite";
-        private static string SqlConnectionString = "Data Source=C:\\Users\\zjobse\\Downloads\\songs.search.sqlite";
+        private static string SqlConnectionString = "Data Source=C:\\ProgramData\\Stichting Opwekking\\OPS 8\\songs.search.sqlite";
+        //private static string SqlConnectionString = "Data Source=C:\\Users\\zjobse\\Downloads\\songs.search.sqlite";
 
         public ReadOpsDb()
         {
