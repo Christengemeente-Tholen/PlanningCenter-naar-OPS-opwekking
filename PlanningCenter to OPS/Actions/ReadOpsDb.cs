@@ -3,6 +3,7 @@ using Microsoft.Data.Sqlite;
 using PlanningCenter_to_OPS.Structs;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -11,17 +12,19 @@ namespace PlanningCenter_to_OPS.Actions
     internal class ReadOpsDb
     {
         public IDictionary<string, List<Song>> books;
+        //private static string SqlConnectionString = "Data Source=C:\\ProgramData\\Stichting Opwekking\\OPS 8\\songs.search.sqlite";
+        private static string SqlConnectionString = "Data Source=C:\\Users\\zjobse\\Downloads\\songs.search.sqlite";
+
         public ReadOpsDb()
         {
-             //using (var connection = new SqliteConnection("Data Source=C:\\Users\\zjobse\\Downloads\\songs.search.sqlite"))
-            using (var connection = new SqliteConnection("Data Source=C:\\ProgramData\\Stichting Opwekking\\OPS 8\\songs.search.sqlite"))
+            using (var connection = new SqliteConnection(SqlConnectionString))
             {
                 connection.Open();
 
                 var command = connection.CreateCommand();
                 command.CommandText =
                 @"
-                    SELECT title, first_line
+                    SELECT title
                     FROM song_index
                 ";
                 IDictionary<string, List<Song>> song_lists = new Dictionary<string, List<Song>>();
@@ -33,7 +36,6 @@ namespace PlanningCenter_to_OPS.Actions
                         if(!int.TryParse(string.Concat(unparsed_current_song[0].Where(char.IsNumber)), out int song_number)) {
                             continue;
                         }
-                        string[] unparsed_first_line = reader.GetString(1).Split(" ");
 
                         string last_item = string.Concat(unparsed_current_song.Last().Where(char.IsLetter));
                         if (!song_lists.TryGetValue(last_item, out _))
@@ -41,11 +43,35 @@ namespace PlanningCenter_to_OPS.Actions
                             song_lists.Add(last_item, new List<Structs.Song>());
                         }
                         string song_name = string.Join(" ", unparsed_current_song.Skip(1).ToArray().SkipLast(last_item.Length));
-                        string first_line = string.Join(" ", unparsed_first_line.Skip(1).ToArray().SkipLast(last_item.Length));
-                        song_lists[last_item].Add(new Structs.Song(song_number, song_name, first_line));
+                        song_lists[last_item].Add(new Structs.Song(song_number, song_name));
                     }
                 }
                 this.books = song_lists;
+            }
+        }
+
+        public static string GetSongText(string song_id)
+        {
+            using (var connection = new SqliteConnection(SqlConnectionString))
+            {
+                connection.Open();
+
+                var command = connection.CreateCommand();
+                command.CommandText =
+                @"
+                    SELECT title, body FROM song_index WHERE title LIKE @song_id LIMIT 1;
+                ";
+                command.Parameters.AddWithValue("song_id", string.Format("%{0}", song_id));
+                command.Prepare();
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        return reader.GetString(1).Substring(reader.GetString(0).Length + 1);
+                    }
+                }
+                return "";
+
             }
         }
 

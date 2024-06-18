@@ -1,5 +1,7 @@
-﻿using System;
+﻿using PlanningCenter_to_OPS.Structs;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -8,7 +10,7 @@ namespace PlanningCenter_to_OPS.Actions
 {
     public partial class UcLabel : Label
     {
-        public ToolTip ToolTip = new ToolTip() { AutomaticDelay = 1500, InitialDelay = 400, UseAnimation = true, UseFading = true, Active = true};
+        public ToolTip ToolTip = new ToolTip() { AutomaticDelay = 1500, InitialDelay = 400, UseAnimation = true, UseFading = true, Active = true };
         public string TooltipText { get; set; }
     }
 
@@ -28,6 +30,8 @@ namespace PlanningCenter_to_OPS.Actions
 
     internal class DrawFormItems
     {
+        private static string SongTextInfo = "Lyrics:";
+
         private Structs.SongListData SongInfo { get; set; }
         private string Type { get; set; }
         private string SongId { get; set; }
@@ -53,8 +57,14 @@ namespace PlanningCenter_to_OPS.Actions
         
         private void ComboBoxDrawItem(object sender, DrawItemEventArgs e)
         {
-            if (e.Index < 0) { return; } // added this line thanks to Andrew's comment
-            string tooltipText = SongTooltipInfo.GetValueOrDefault(ComboBox.GetItemText(ComboBox.Items[e.Index]));
+            if (e.Index < 0) { return; }
+            string item = SongTooltipInfo.GetValueOrDefault(ComboBox.GetItemText(ComboBox.Items[e.Index]));
+            string tooltipText = "";
+            if (!string.IsNullOrEmpty(item))
+            {
+                string songText = ReadOpsDb.GetSongText(item);
+                tooltipText = GenerateSongTextInfo(songText);
+            }
             e.DrawBackground();
             using (SolidBrush br = new SolidBrush(e.ForeColor))
             {
@@ -83,7 +93,7 @@ namespace PlanningCenter_to_OPS.Actions
             if (this.Type != "")
             {
                 ComboBox.Items.Add($"{this.Type} {this.SongId}");
-                SongTooltipInfo.Add($"{this.Type} {this.SongId}", "");
+                SongTooltipInfo.Add($"{this.Type} {this.SongId}", $"{this.Type}{this.SongId}");
             }
             string song_lowercase_title = SongInfo.attributes.title.ToLower();
             ComboBox.DrawItem += ComboBoxDrawItem;
@@ -92,7 +102,7 @@ namespace PlanningCenter_to_OPS.Actions
             {
                 ComboBox.Items.Add($"et {song.id} - {song.name}");
                 FoundSongs.Add($"et {song.id} - {song.name}", song);
-                SongTooltipInfo.Add($"et {song.id} - {song.name}", song.first_line);
+                SongTooltipInfo.Add($"et {song.id} - {song.name}", $"et{song.id}");
             };
             ComboBox.Items.Add("Planning center");
             ComboBox.SelectedIndex = 0;
@@ -115,14 +125,19 @@ namespace PlanningCenter_to_OPS.Actions
             f.Controls.Add(ComboBox);
             f.Controls.Add(CopyButton);
         }
+        
+        private string GenerateSongTextInfo(string lyrics)
+        {
+            string firstFewLines = string.Join(Environment.NewLine, lyrics.Trim().Split(Environment.NewLine).Take(5));
+            return SongTextInfo + Environment.NewLine + firstFewLines + Environment.NewLine + "...";
+        }
 
         private void Label_MouseEnter(object sender, EventArgs ea)
         {
             string lyrics = GetLyrics();
-            string firstFewLines = string.Join(Environment.NewLine, lyrics.Split(Environment.NewLine).Take(5));
+            string firstFewLines = GenerateSongTextInfo(lyrics);
             if (!string.IsNullOrEmpty(lyrics))
             {
-               
                 Label.ToolTip.SetToolTip(Label, firstFewLines);
                 Label.ToolTip.Show(firstFewLines, Label.Parent);
             }
