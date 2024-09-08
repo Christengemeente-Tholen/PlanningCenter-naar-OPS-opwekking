@@ -26,6 +26,18 @@ namespace PlanningCenter_to_OPS.Actions
         }
     }
 
+    internal class DpiScale
+    {
+        public float DpiX;
+        public float DpiY;
+
+        public DpiScale(float dpiX, float dpiY)
+        {
+            DpiX = dpiX;
+            DpiY = dpiY;
+        }
+    }
+
     internal class DrawFormItems
     {
         private static string SongTextInfo = "Lyrics:";
@@ -35,15 +47,18 @@ namespace PlanningCenter_to_OPS.Actions
         private string SongId { get; set; }
         private Config Config { get; set; }
 
-        private UcLabel Label = new UcLabel() { Width = 150 };
+        public static Graphics graphics = Graphics.FromHwnd(IntPtr.Zero);
+        public static DpiScale dpi_scale = new DpiScale(graphics.DpiX / 96, graphics.DpiY / 96);
+
+        private UcLabel Label = new UcLabel() { Width = (int)Math.Round(150 * dpi_scale.DpiX), Height = (int)Math.Round(new UcLabel().Height * dpi_scale.DpiY) };
         private Dictionary<string, Structs.Song> FoundSongs = new Dictionary<string, Structs.Song>();
         private Dictionary<string, string> SongTooltipInfo = new Dictionary<string, string>();
-        private ComboBox ComboBox = new ComboBox() { DropDownStyle = ComboBoxStyle.DropDownList, DrawMode = DrawMode.OwnerDrawFixed, Width = 250 };
-        private Button CopyButton = new Button() { Text = "Kopieer lyrics", Width = 90 };
+        private ComboBox ComboBox = new ComboBox() { DropDownStyle = ComboBoxStyle.DropDownList, DrawMode = DrawMode.OwnerDrawFixed, Width = (int)Math.Round(250 * dpi_scale.DpiX) };
+        private Button CopyButton = new Button() { Text = "Kopieer lyrics", Width = (int)Math.Round(90 * dpi_scale.DpiX), Height = (int)Math.Round(new UcLabel().Height * dpi_scale.DpiY) };
         private ToolTip ToolTip = new ToolTip() { AutoPopDelay = 0, InitialDelay = 0, ReshowDelay = 0, ShowAlways = true };
 
-        public static int StartX { get; set; } = 20;
-        public static int StartY { get; set; } = 40;
+        public static int StartX { get; set; } = (int)Math.Round(20 * DrawFormItems.dpi_scale.DpiX);
+        public static int StartY { get; set; } = (int)Math.Round(40 * DrawFormItems.dpi_scale.DpiX);
         public static List<Structs.Song> OwnSongs;
         public DrawFormItems(Config config, Structs.SongListData song_info, string type, string song_id)
         {
@@ -109,16 +124,16 @@ namespace PlanningCenter_to_OPS.Actions
 
             Label.Left = StartX;
             Label.Top = StartY;
-            StartX += 150; // Move position to right
+            StartX += (int)Math.Round(150 * dpi_scale.DpiX); // Move position to right
             ComboBox.Left = StartX;
-            ComboBox.Top = StartY - 4;
+            ComboBox.Top = StartY - (int)Math.Round(4 * dpi_scale.DpiY);
 
-            CopyButton.Left = StartX + 252;
-            CopyButton.Top = StartY - 4;
+            CopyButton.Left = StartX + (int)Math.Round(252 * dpi_scale.DpiX);
+            CopyButton.Top = StartY - (int)Math.Round(4 * dpi_scale.DpiY);
             CopyButton.Click += CopyButton_Click;
 
-            StartX = 20; // Reset to start
-            StartY += 30; // Move position to down
+            StartX = (int)Math.Round(20 * dpi_scale.DpiX); // Reset to start
+            StartY += (int)Math.Round(30 * dpi_scale.DpiY); // Move position to down
             f.Controls.Add(Label);
             f.Controls.Add(ComboBox);
             f.Controls.Add(CopyButton);
@@ -147,16 +162,16 @@ namespace PlanningCenter_to_OPS.Actions
             label.Text = text;
             label.Left = StartX;
             label.Top = StartY;
-            label.Width = 400;
+            label.Width = (int)Math.Round(400 * dpi_scale.DpiX);
             label.ForeColor = System.Drawing.Color.Gray;
-            StartY += 30;
+            StartY += (int)Math.Round(30 * dpi_scale.DpiY);
             f.Controls.Add(label);
         }
 
         private string GetLyrics()
         {
             Structs.Lyrics lyrics = Api.GetLyrics(this.Config, this.SongInfo.links.self);
-            return LyricsToFile.Lyrics(lyrics.data.attributes.lyrics);
+            return LyricsToFile.Lyrics(lyrics.data.attributes.lyrics, this.Config.skip_list);
         }
 
         private void CopyButton_Click(object sender, EventArgs e)

@@ -10,7 +10,12 @@ namespace PlanningCenter_to_OPS.Actions
 {
     internal class LyricsToFile
     {
-        private static readonly string[] removed_text = {
+        private static readonly string[] removed_if_in_line = {
+            "Vers 1",
+            "Vers 2",
+            "Vers 3",
+            "Vers 4",
+            "Vers 5",
             "Verse 1",
             "Verse 2",
             "Verse 3",
@@ -35,7 +40,15 @@ namespace PlanningCenter_to_OPS.Actions
             "(Interlude)",
             "(REPEAT)",
             "Verhoging",
+        };
+
+        private static readonly string[] remove_text = {
+            "<b>",
+            "<i>",
+            "<u>",
             "</b>",
+            "</i>",
+            "</u>"
         };
 
         public static string ReplaceWordChars(string text)
@@ -73,7 +86,7 @@ namespace PlanningCenter_to_OPS.Actions
             return s;
         }
 
-        internal static string Lyrics(string lyrics)
+        internal static string Lyrics(string lyrics, List<string> skip_list)
         {
 
             string[] current_lyrics = lyrics.Split(
@@ -82,10 +95,11 @@ namespace PlanningCenter_to_OPS.Actions
             );
             string cleaned_lyrics = "";
 
+            string previous_line = "";
             foreach (string line in current_lyrics)
             {
-                // if value not in RemovedText
-                if (!removed_text.Any(s => line.ToLower().Contains(s.ToLower())))
+                // if value not in RemovedText or if added to skip_list
+                if (!removed_if_in_line.Any(s => line.ToLower().Contains(s.ToLower())) || skip_list.Any(s => s == line))
                 {
                     // replace chorus with ops eqivelant
                     Dictionary<string, string> translate_to_ops = new Dictionary<string, string>() {
@@ -112,7 +126,17 @@ namespace PlanningCenter_to_OPS.Actions
                         char[] chars = Encoding.ASCII.GetChars(bytes);
                         string result = new(chars);
                         result = result.Replace("?", "");
-                        cleaned_lyrics += result + "\r\n";
+                        foreach (var item in remove_text)
+                        {
+                            result = Regex.Replace(result, item, "");
+                        }
+
+                        // skip the line if current and previous result are both empty
+                        if (!(previous_line == "" && result == ""))
+                        {
+                            cleaned_lyrics += result + "\r\n";
+                        }
+                        previous_line = result;
                     }
                 }
             }
@@ -126,7 +150,7 @@ namespace PlanningCenter_to_OPS.Actions
             Structs.Lyrics lyrics_return = Api.GetLyrics(config, song.links.self);
             if (lyrics_return.data.attributes.lyrics != null)
             {
-                string cleaned_lyrics = Lyrics(lyrics_return.data.attributes.lyrics);
+                string cleaned_lyrics = Lyrics(lyrics_return.data.attributes.lyrics, config.skip_list);
                 try
                 {
                     File.WriteAllText(Path.Combine(config.song_folder, String.Format("{0}.txt", song.attributes.title)), cleaned_lyrics);

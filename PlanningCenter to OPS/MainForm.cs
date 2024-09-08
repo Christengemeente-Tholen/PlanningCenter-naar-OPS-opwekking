@@ -57,6 +57,8 @@ namespace PlanningCenter_to_OPS
             {
                 OpsThemeSelector.SelectedIndex = 0;
             }
+
+            config.ReadSkipList();
         }
 
         private void CheckPlan()
@@ -130,7 +132,7 @@ namespace PlanningCenter_to_OPS
         {
             try
             {
-                Process.Start(new ProcessStartInfo() { FileName = "C:\\ProgramData\\Stichting Opwekking\\OPS 8\\opsSkipList.txt", UseShellExecute = true });
+                Process.Start(new ProcessStartInfo() { FileName = config.skip_list_location, UseShellExecute = true });
             }
             catch (Win32Exception winE)
             {

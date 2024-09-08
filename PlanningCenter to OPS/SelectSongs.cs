@@ -35,8 +35,8 @@ namespace PlanningCenter_to_OPS
             }
 
             // reset positioning on statup
-            DrawFormItems.StartX = 20;
-            DrawFormItems.StartY = 40;
+            DrawFormItems.StartX = (int)Math.Round(20 * DrawFormItems.dpi_scale.DpiX);
+            DrawFormItems.StartY = (int)Math.Round(40 * DrawFormItems.dpi_scale.DpiY);
             DrawFormItems.OwnSongs = own_songs;
 
             if (this.SongList.data.Count <= 0)
@@ -82,13 +82,13 @@ namespace PlanningCenter_to_OPS
 
             ContinueButton.Text = "Doorgaan";
             ContinueButton.Left = DrawFormItems.StartX;
-            ContinueButton.Top = DrawFormItems.StartY - 5;
-            ContinueButton.Width = 492;
-            ContinueButton.Height = 25;
+            ContinueButton.Top = DrawFormItems.StartY - (int)Math.Round(5 * DrawFormItems.dpi_scale.DpiY);
+            ContinueButton.Width = (int)Math.Round(492 * DrawFormItems.dpi_scale.DpiX);
+            ContinueButton.Height = (int)Math.Round(25 * DrawFormItems.dpi_scale.DpiY);
             ContinueButton.Click += ContinueButton_Click;
             this.Controls.Add(ContinueButton);
 
-            DrawFormItems.StartY += 10;
+            DrawFormItems.StartY += (int)Math.Round(10 * DrawFormItems.dpi_scale.DpiY);
             Label label = new Label();
             label.Text = "";
             label.Top = DrawFormItems.StartY;

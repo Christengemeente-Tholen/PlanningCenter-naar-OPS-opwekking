@@ -1,7 +1,16 @@
-﻿namespace PlanningCenter_to_OPS
+﻿using System.IO;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Diagnostics;
+
+namespace PlanningCenter_to_OPS
 {
     internal class Config
     {
+        public string skip_list_location = "C:\\ProgramData\\Stichting Opwekking\\OPS 8\\opsSkipList.txt";
+        public List<string> skip_list = new();
+
         public string app_id;
         public string secret;
         public string song_folder;
@@ -31,6 +40,23 @@
             et_bundle_name = Properties.Settings.Default.et_bundle_name;
             et_enabled = Properties.Settings.Default.et_enabled;
             last_used_ops_theme = Properties.Settings.Default.last_used_ops_theme;
+        }
+
+
+        public void ReadSkipList()
+        {
+            try
+            {
+                StreamReader sr = new StreamReader(this.skip_list_location);
+                while (!sr.EndOfStream)
+                {
+                    skip_list.Add(sr.ReadLine());
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Failed to read skiplist: " + e.Message);
+            }
         }
 
         public void Update()
