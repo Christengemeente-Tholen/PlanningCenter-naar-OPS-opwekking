@@ -11,11 +11,13 @@ namespace PlanningCenter_to_OPS.Actions
     internal class LyricsToFile
     {
         private static readonly string[] removed_if_in_line = {
+            "Vers",
             "Vers 1",
             "Vers 2",
             "Vers 3",
             "Vers 4",
             "Vers 5",
+            "Verse",
             "Verse 1",
             "Verse 2",
             "Verse 3",
@@ -98,38 +100,25 @@ namespace PlanningCenter_to_OPS.Actions
             string previous_line = "";
             foreach (string line in current_lyrics)
             {
-                // if value not in RemovedText or if added to skip_list
-                if (!removed_if_in_line.Any(s => line.ToLower().Contains(s.ToLower())) || skip_list.Any(s => s == line))
+                string mut_line = line;
+                foreach (var item in remove_text)
                 {
-                    // replace chorus with ops eqivelant
-                    Dictionary<string, string> translate_to_ops = new Dictionary<string, string>() {
-                    { "chorus", "Chorus:" },
-                    { "chorus 1", "Chorus 1:"},
-                    { "chorus 2", "Chorus 2:"},
-                    { "chorus 3", "Chorus 3:"},
-                    { "bridge", "Bridge:" },
-                    { "bridge 2x", "Bridge 2x:" },
-                    { "refrein", "Refrein:" },
-                    { "refrein 1", "Refrein 1:"},
-                    { "refrein 2", "Refrein 2:"},
-                    { "refrein 3", "Refrein 3:"},
-                };
-
-                    string translated_ops;
-                    if (translate_to_ops.TryGetValue(line.ToLower().Replace(":", ""), out translated_ops))
+                    mut_line = Regex.Replace(mut_line, item, "");
+                }
+                // if value not in RemovedText or if added to skip_list
+                if (!removed_if_in_line.Any(s => mut_line.ToLower().Contains(s.ToLower())) || skip_list.Any(s => s == mut_line))
+                {
+                    // Use skiplist to make it a header item when needed
+                    if (skip_list.Contains(mut_line.Trim().ToLower().Replace(":", "") + ":"))
                     {
-                        cleaned_lyrics += translated_ops + "\r\n";
+                        cleaned_lyrics += mut_line.Trim() + ":\r\n";
                     }
                     else
                     {
-                        byte[] bytes = Encoding.ASCII.GetBytes(ReplaceWordChars(line));
+                        byte[] bytes = Encoding.ASCII.GetBytes(ReplaceWordChars(mut_line));
                         char[] chars = Encoding.ASCII.GetChars(bytes);
                         string result = new(chars);
                         result = result.Replace("?", "");
-                        foreach (var item in remove_text)
-                        {
-                            result = Regex.Replace(result, item, "");
-                        }
 
                         // skip the line if current and previous result are both empty
                         if (!(previous_line == "" && result == ""))
