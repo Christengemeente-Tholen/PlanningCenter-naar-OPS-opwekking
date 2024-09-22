@@ -10,39 +10,20 @@ namespace PlanningCenter_to_OPS.Actions
 {
     internal class LyricsToFile
     {
-        private static readonly string[] removed_if_in_line = {
-            "Vers",
-            "Vers 1",
-            "Vers 2",
-            "Vers 3",
-            "Vers 4",
-            "Vers 5",
-            "Verse",
-            "Verse 1",
-            "Verse 2",
-            "Verse 3",
-            "Verse 4",
-            "Verse 5",
-            "Couplet 1",
-            "Couplet 2",
-            "Couplet 3",
-            "Couplet 4",
-            "Couplet 5",
-            "(Bridge",
-            "Misc 1",
-            "Misc 2",
-            "Misc 3",
-            "Misc 4",
-            "Misc 5",
-            "(Pre-Chorus)",
-            "Pre-Chorus",
-            "INTERMEZZO",
-            "INTRO",
-            "(TAG)",
-            "(Interlude)",
-            "(REPEAT)",
-            "Verhoging",
-        };
+        private static readonly List<string> removed_if_line = [
+            "vers",
+            "verse",
+            "couplet",
+            "bridge",
+            "misc",
+            "pre-Chorus",
+            "intermezzo",
+            "intro",
+            "tag",
+            "interlude",
+            "(repeat)",
+            "verhoging",
+        ];
 
         private static readonly string[] remove_text = {
             "<b>",
@@ -106,7 +87,8 @@ namespace PlanningCenter_to_OPS.Actions
                     mut_line = Regex.Replace(mut_line, item, "");
                 }
                 // if value not in RemovedText or if added to skip_list
-                if (!removed_if_in_line.Any(s => mut_line.ToLower().Contains(s.ToLower())) || skip_list.Any(s => s == mut_line))
+                var regex = new Regex(string.Format(@"^\b(?:{0})\b(| \d| \dx)$", string.Join("|", removed_if_line)), RegexOptions.Compiled);
+                if (!regex.Match(mut_line.Trim().ToLower()).Success || skip_list.Any(s => s == mut_line))
                 {
                     // Use skiplist to make it a header item when needed
                     if (skip_list.Contains(mut_line.Trim().ToLower().Replace(":", "") + ":"))
